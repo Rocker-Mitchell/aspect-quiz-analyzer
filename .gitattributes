@@ -1,0 +1,6 @@
+# Perform LF normalization for text files
+* text=auto
+
+# Use LF for JavaScript and TypeScript
+*.js eol=lf
+*.ts eol=lf

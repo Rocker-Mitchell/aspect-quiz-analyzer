@@ -1,0 +1,12 @@
+<nav>
+  <ul class="flex flex-wrap items-center justify-start gap-2">
+    <li *ngFor="let navLink of navLinks">
+      <a
+        class="block cursor-pointer p-1 font-encode-sans text-base font-normal leading-5 decoration-neutral-400 underline-offset-4 font-stretch-semi-expanded hover:underline"
+        [routerLink]="navLink.link"
+      >
+        {{ navLink.displayText }}
+      </a>
+    </li>
+  </ul>
+</nav>

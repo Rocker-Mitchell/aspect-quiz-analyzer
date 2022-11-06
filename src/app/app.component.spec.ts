@@ -1,33 +1,49 @@
-import {TestBed} from '@angular/core/testing';
+import {Component, DebugElement} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 
+@Component({selector: 'app-header', template: ''})
+class HeaderStubComponent {}
+
+@Component({selector: 'app-footer', template: ''})
+class FooterStubComponent {}
+
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+  let debugElement: DebugElement;
+  let element: HTMLElement;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      declarations: [AppComponent, HeaderStubComponent, FooterStubComponent],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'aspect-quiz-analyzer'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('aspect-quiz-analyzer');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
+    element = fixture.nativeElement as HTMLElement;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'aspect-quiz-analyzer app is running!'
-    );
+  });
+
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render main element', () => {
+    expect(element.querySelector('main')).toBeTruthy();
+  });
+
+  it('should render header component', () => {
+    expect(debugElement.query(By.directive(HeaderStubComponent))).toBeTruthy();
+  });
+
+  it('should render footer component', () => {
+    expect(debugElement.query(By.directive(FooterStubComponent))).toBeTruthy();
   });
 });

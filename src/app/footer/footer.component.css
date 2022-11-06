@@ -1,0 +1,4 @@
+app-footer {
+  display: block;
+  background-color: theme('colors.neutral[200]');
+}

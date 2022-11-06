@@ -1,0 +1,77 @@
+<section class="space-y-6 pt-6 pb-8">
+  <header class="px-2 py-4 text-center">
+    <h1
+      class="font-saira text-4xl font-bold uppercase leading-none text-neutral-800 font-stretch-semi-expanded md:text-5xl lg:text-6xl"
+    >
+      Aspect Quiz Analyzer
+    </h1>
+
+    <p
+      class="font-saira text-lg font-medium opacity-80 font-stretch-semi-expanded md:text-xl"
+    >
+      Detailed score analysis of the
+      <span class="inline-block">Extended Zodiac's</span> Aspect quiz
+    </p>
+  </header>
+
+  <div class="container mx-auto p-2">
+    <p class="mx-auto max-w-prose text-base md:text-lg lg:leading-8">
+      Welcome to the <strong class="inline-block">Aspect Quiz Analyzer</strong>,
+      an app to get a detailed score analysis from the answers you select in the
+      <a
+        href="http://hs.hiveswap.com/ezodiac/index.php"
+        target="_blank"
+        class="link inline-block"
+        >Extended Zodiac</a
+      >
+      test's Aspect quiz.
+    </p>
+  </div>
+
+  <div
+    class="container mx-auto space-y-4 bg-neutral-200 px-4 py-8 text-center lg:py-10"
+  >
+    <p class="text-2xl font-medium font-stretch-expanded">
+      Take the quiz here!
+    </p>
+
+    <a [routerLink]="quizLink" class="button">Begin</a>
+  </div>
+
+  <form
+    name="aspect-quiz-answers-form"
+    onsubmit="return false"
+    class="container mx-auto px-2 py-4"
+  >
+    <p
+      class="mx-auto max-w-prose text-center text-base md:text-lg lg:leading-8"
+    >
+      If you have a string of answers, fill it in here and skip to the results
+    </p>
+
+    <div class="mt-4 flex flex-wrap items-center justify-center gap-1">
+      <div>
+        <label for="app-homepage-aspect-quiz-answers" class="sr-only"
+          >Quiz Answers</label
+        >
+
+        <input
+          id="app-homepage-aspect-quiz-answers"
+          type="text"
+          name="answers"
+          title="An answer sequence, 12 letters long with letters A through E, case insensitive"
+          required
+          pattern="[a-eA-E]{12}"
+          maxlength="12"
+          spellcheck="false"
+          autocomplete="off"
+          placeholder="CCAABBEEDDAA"
+          class="input-text max-w-xs flex-shrink"
+        />
+        <!-- TODO would like to have validation messages from script; failed pattern validation shows title -->
+      </div>
+
+      <button class="button">Submit</button>
+    </div>
+  </form>
+</section>

@@ -99,6 +99,14 @@
     }
   },
   "defaultProject": "aspect-quiz-analyzer",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "skipImport": true,
+        "viewEncapsulation": "None"
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }

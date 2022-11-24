@@ -1,10 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {AppRoutingPath} from '@app/app-routing-path';
-
-interface HeaderNavLinkData {
-  link: string;
-  displayText: string;
-}
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {NavLink} from '@app/nav-link/nav-link';
+import {NavLinkService} from '@app/nav-link/nav-link.service';
 
 @Component({
   selector: 'app-header-nav',
@@ -12,15 +8,12 @@ interface HeaderNavLinkData {
   styleUrls: ['./header-nav.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HeaderNavComponent {
-  public readonly navLinks: HeaderNavLinkData[] = [
-    {
-      link: '/' + AppRoutingPath.TakeQuiz,
-      displayText: 'Take the Quiz',
-    },
-    {
-      link: '/' + AppRoutingPath.ExplainAnalysis,
-      displayText: 'How it Works',
-    },
-  ];
+export class HeaderNavComponent implements OnInit {
+  public navLinks: NavLink[] = [];
+
+  constructor(private readonly navLinkService: NavLinkService) {}
+
+  public ngOnInit(): void {
+    this.navLinks = this.navLinkService.getNavLinks();
+  }
 }

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Route} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {WithNavLinkRouteData} from '@app/nav-link/nav-link-route-data';
 import {HeaderNavComponent} from './header-nav.component';
 
 @Component({selector: 'app-quiz-stub', template: ''})
@@ -25,23 +27,21 @@ describe('HeaderNavComponent', () => {
             path: 'quiz',
             component: QuizStubComponent,
             data: {
-              navLinkLabel: 'Take the Quiz',
-              navLinkOrder: 1,
+              navLink: {label: 'Take the Quiz', order: 1},
             },
           },
           {
             path: 'explain',
             component: ExplainStubComponent,
             data: {
-              navLinkLabel: 'How it Works',
-              navLinkOrder: 2,
+              navLink: {label: 'How it Works', order: 2},
             },
           },
           {
             path: '',
             component: HomeStubComponent,
           },
-        ]),
+        ] as Array<Route & WithNavLinkRouteData>),
       ],
       declarations: [HeaderNavComponent],
     }).compileComponents();

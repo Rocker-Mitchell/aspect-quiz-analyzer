@@ -1,24 +1,19 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {NavLinkRouteData} from '@app/nav-link/nav-link-route-data';
+import {Route, RouterModule} from '@angular/router';
+import {WithNavLinkRouteData} from '@app/nav-link/nav-link-route-data';
 import {AppRoutingPath} from './app-routing-path';
 
-const quizRouteData: NavLinkRouteData = {
-  navLinkLabel: 'Take the Quiz',
-  navLinkOrder: 1,
-};
-
-const explainRouteData: NavLinkRouteData = {
-  navLinkLabel: 'How it Works',
-  navLinkOrder: 2,
-};
-
-const routes: Routes = [
+const routes: Array<Route & WithNavLinkRouteData> = [
   {
     path: AppRoutingPath.TakeQuiz,
     loadChildren: () =>
       import('@app/take-quiz/take-quiz.module').then((m) => m.TakeQuizModule),
-    data: quizRouteData,
+    data: {
+      navLink: {
+        label: 'Take the Quiz',
+        order: 1,
+      },
+    },
   },
   {
     path: AppRoutingPath.ExplainAnalysis,
@@ -26,7 +21,12 @@ const routes: Routes = [
       import('@app/explain-analysis/explain-analysis.module').then(
         (m) => m.ExplainAnalysisModule
       ),
-    data: explainRouteData,
+    data: {
+      navLink: {
+        label: 'How it Works',
+        order: 2,
+      },
+    },
   },
   {
     path: AppRoutingPath.Homepage,

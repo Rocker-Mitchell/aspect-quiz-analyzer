@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {Routes} from '@angular/router';
+import {Route} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {WithNavLinkRouteData} from './nav-link-route-data';
 import {NavLinkService} from './nav-link.service';
 
 @Component({selector: 'app-one-stub', template: ''})
@@ -13,13 +14,13 @@ class TwoStubComponent {}
 describe('NavLinkService', () => {
   let service: NavLinkService;
 
-  const setup = (routes: Routes = []) => {
+  function setup(routes: Array<Route & WithNavLinkRouteData> = []) {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes(routes)],
       providers: [NavLinkService],
     });
     service = TestBed.inject(NavLinkService);
-  };
+  }
 
   it('should be created', () => {
     setup();
@@ -32,14 +33,14 @@ describe('NavLinkService', () => {
         path: 'one',
         component: OneStubComponent,
         data: {
-          navLinkLabel: 'Route One',
+          navLink: {label: 'Route One'},
         },
       },
       {
         path: 'two',
         component: TwoStubComponent,
         data: {
-          navLinkLabel: 'Route Two',
+          navLink: {label: 'Route Two'},
         },
       },
     ]);
@@ -60,7 +61,7 @@ describe('NavLinkService', () => {
         path: 'two',
         component: TwoStubComponent,
         data: {
-          navLinkLabel: 'Route Two',
+          navLink: {label: 'Route Two'},
         },
       },
     ]);
@@ -74,16 +75,14 @@ describe('NavLinkService', () => {
         path: 'two',
         component: TwoStubComponent,
         data: {
-          navLinkLabel: 'Route Two',
-          navLinkOrder: 2,
+          navLink: {label: 'Route Two', order: 2},
         },
       },
       {
         path: 'one',
         component: OneStubComponent,
         data: {
-          navLinkLabel: 'Route One',
-          navLinkOrder: 1,
+          navLink: {label: 'Route One', order: 1},
         },
       },
     ]);
@@ -100,15 +99,14 @@ describe('NavLinkService', () => {
         path: 'one',
         component: OneStubComponent,
         data: {
-          navLinkLabel: 'Route One',
+          navLink: {label: 'Route One'},
         },
       },
       {
         path: 'two',
         component: TwoStubComponent,
         data: {
-          navLinkLabel: 'Route Two',
-          navLinkOrder: 2,
+          navLink: {label: 'Route Two', order: 2},
         },
       },
     ]);
@@ -125,16 +123,14 @@ describe('NavLinkService', () => {
         path: 'one',
         component: OneStubComponent,
         data: {
-          navLinkLabel: 'Route One',
-          navLinkOrder: undefined,
+          navLink: {label: 'Route One', order: undefined},
         },
       },
       {
         path: 'two',
         component: TwoStubComponent,
         data: {
-          navLinkLabel: 'Route Two',
-          navLinkOrder: 2,
+          navLink: {label: 'Route Two', order: 2},
         },
       },
     ]);

@@ -1,19 +1,17 @@
-@layer base {
-  html {
-    height: 100%;
-  }
+html {
+  height: 100%;
+}
 
-  body {
-    height: 100%;
-    overflow: auto;
-    background-color: theme('colors.neutral[50]');
-    color: theme('colors.neutral[900]');
-    font-family: theme('fontFamily.encode-sans');
-    @apply text-base;
-  }
+body {
+  height: 100%;
+  overflow: auto;
+  background-color: theme('colors.neutral[50]');
+  color: theme('colors.neutral[900]');
+  font-family: theme('fontFamily.encode-sans');
+  @apply text-base;
+}
 
-  :focus-visible {
-    outline: theme('colors.neutral[900]') solid 2px;
-    outline-offset: 2px;
-  }
+:focus-visible {
+  outline: theme('colors.neutral[900]') solid 2px;
+  outline-offset: 2px;
 }

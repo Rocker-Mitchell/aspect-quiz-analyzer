@@ -1,7 +1,5 @@
-@layer components {
-  .link {
-    cursor: pointer;
-    color: theme('colors.blue[600]');
-    text-decoration-line: underline;
-  }
+.link {
+  cursor: pointer;
+  color: theme('colors.blue[600]');
+  text-decoration-line: underline;
 }

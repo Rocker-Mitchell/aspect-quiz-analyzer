@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-standard"],
   "rules": {
     "no-empty-source": [
       true,
@@ -7,6 +7,7 @@
         "severity": "warning"
       }
     ],
+    "import-notation": "string",
     "function-no-unknown": [
       true,
       {

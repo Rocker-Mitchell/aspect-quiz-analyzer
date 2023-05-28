@@ -8,6 +8,7 @@ body {
   background-color: theme('colors.neutral[50]');
   color: theme('colors.neutral[900]');
   font-family: theme('fontFamily.encode-sans');
+
   @apply text-base;
 }
 

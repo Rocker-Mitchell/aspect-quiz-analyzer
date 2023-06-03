@@ -6,6 +6,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
+import {CustomMatchers} from 'test-helpers/custom-matchers';
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
@@ -13,3 +14,8 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting(),
   {teardown: {destroyAfterEach: true}}
 );
+
+// Then add custom matchers for all tests.
+beforeEach(() => {
+  jasmine.addMatchers(CustomMatchers);
+});

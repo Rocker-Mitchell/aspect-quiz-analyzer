@@ -86,7 +86,7 @@
       }
     },
     {
-      "files": ["*.spec.ts"],
+      "files": ["*.spec.ts", "src/test-helpers/**/*.ts", "src/test.ts"],
       "env": {
         "jasmine": true
       }

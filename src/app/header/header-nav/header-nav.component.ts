@@ -5,7 +5,7 @@ import {NavLinkService} from '@app/nav-link/nav-link.service';
 @Component({
   selector: 'app-header-nav',
   templateUrl: './header-nav.component.html',
-  styleUrls: ['./header-nav.component.css'],
+  styleUrls: ['./header-nav.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderNavComponent implements OnInit {

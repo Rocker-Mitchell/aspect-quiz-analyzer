@@ -6,7 +6,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 @Component({
   selector: 'app-take-quiz',
   templateUrl: './take-quiz.component.html',
-  styleUrls: ['./take-quiz.component.css'],
+  styleUrls: ['./take-quiz.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class TakeQuizComponent {}

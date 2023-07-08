@@ -1,11 +1,14 @@
 const plugin = require('tailwindcss/plugin');
 
+/**
+ * Utility plugin for `font-stretch` property.
+ */
 module.exports = plugin(
   function ({matchUtilities, theme}) {
     matchUtilities(
       {
         'font-stretch': (value) => ({
-          fontStretch: value,
+          'font-stretch': value,
         }),
       },
       {values: theme('fontStretch')}

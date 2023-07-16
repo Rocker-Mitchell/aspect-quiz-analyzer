@@ -1,0 +1,13 @@
+<form class="container mx-auto flex flex-col items-center gap-6 p-2">
+  <div *ngFor="let question of questions" class="space-y-2">
+    <p class="max-w-prose text-base md:text-lg lg:leading-8">
+      {{ question.legend }}
+    </p>
+
+    <ol class="max-w-prose space-y-2 pl-2">
+      <li *ngFor="let answer of question.answers | keyvalue">
+        <i>{{ answer.key | uppercase }}.</i> {{ answer.value }}
+      </li>
+    </ol>
+  </div>
+</form>

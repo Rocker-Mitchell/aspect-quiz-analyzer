@@ -1,13 +1,15 @@
 import {isNavLinkRouteData} from './nav-link-route-data';
 
 describe('isNavLinkRouteData', () => {
-  it('should handle undefined navLink as valid', () => {
+  it('should handle undefined navLink as invalid', () => {
     expect(isNavLinkRouteData({dummy: 'dummy'}))
-      .withContext('expected property not set to be valid')
-      .toBeTrue();
+      .withContext('expected property not set to be invalid')
+      .toBeFalse();
     expect(isNavLinkRouteData({navLink: undefined}))
-      .withContext('expected property explicitly set as undefined to be valid')
-      .toBeTrue();
+      .withContext(
+        'expected property explicitly set as undefined to be invalid'
+      )
+      .toBeFalse();
   });
 
   it('should handle navLink not being an object as invalid', () => {

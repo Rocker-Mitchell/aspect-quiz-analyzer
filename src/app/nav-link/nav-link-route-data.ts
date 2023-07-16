@@ -10,9 +10,11 @@ export interface NavLinkRouteData extends Data {
   };
 }
 
-export function isNavLinkRouteData(data: Data): data is NavLinkRouteData {
+export function isNavLinkRouteData(
+  data: Data
+): data is Required<NavLinkRouteData> {
   if (data.navLink === undefined) {
-    return true;
+    return false;
   }
   if (
     data.navLink.label === undefined ||

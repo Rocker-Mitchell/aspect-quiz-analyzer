@@ -1,7 +1,7 @@
 /**
  * A navigation link, storing data for rendering.
  */
-export type NavLink = {
+export interface NavLink {
   path: string;
   label: string;
-};
+}

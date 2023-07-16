@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {NavLink} from '@app/nav-link/nav-link.model';
+import {NavLink} from '@app/nav-link/nav-link';
 import {NavLinkService} from '@app/nav-link/nav-link.service';
 
 @Component({

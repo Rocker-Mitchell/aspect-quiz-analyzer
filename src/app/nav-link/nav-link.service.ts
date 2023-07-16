@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Route, Router} from '@angular/router';
+import {NavLink} from './nav-link';
 import {isNavLinkRouteData, NavLinkRouteData} from './nav-link-route-data';
-import {NavLink} from './nav-link.model';
 
 interface NavLinkRoute extends Route {
   path: string;
@@ -12,8 +12,7 @@ function isNavLinkRoute(route: Route): route is NavLinkRoute {
   return (
     route.path !== undefined &&
     route.data !== undefined &&
-    isNavLinkRouteData(route.data) &&
-    route.data.navLink !== undefined
+    isNavLinkRouteData(route.data)
   );
 }
 

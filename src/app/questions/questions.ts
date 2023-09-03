@@ -1,12 +1,15 @@
 import {InjectionToken} from '@angular/core';
 
 export interface Question {
-  id: string;
-  text: string;
-  answers: Record<'a' | 'b' | 'c' | 'd' | 'e', string>;
+  readonly id: string;
+  readonly text: string;
+  readonly answers: Readonly<Record<'a' | 'b' | 'c' | 'd' | 'e', string>>;
 }
 
-export const QUESTIONS_TOKEN = new InjectionToken<Question[]>('questions', {
+export type QuestionsArray = ReadonlyArray<Question>;
+
+export const QUESTIONS_TOKEN = new InjectionToken<QuestionsArray>('questions', {
+  providedIn: 'root',
   factory: () => [
     {
       id: 'breathblood1',

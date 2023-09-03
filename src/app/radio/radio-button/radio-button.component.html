@@ -1,0 +1,12 @@
+<label class="flex w-fit max-w-prose cursor-pointer items-center">
+  <input
+    type="radio"
+    [attr.name]="name"
+    [attr.value]="value"
+    [checked]="checked"
+    class="me-2 ms-2 shrink-0 cursor-pointer"
+  />
+  <span>
+    <ng-content></ng-content>
+  </span>
+</label>

@@ -1,13 +1,18 @@
 <form class="container mx-auto flex flex-col items-center gap-6 p-2">
-  <div *ngFor="let question of questions" class="space-y-2">
-    <p class="max-w-prose text-base md:text-lg lg:leading-8">
-      {{ question.legend }}
-    </p>
+  <app-radio-group
+    *ngFor="let question of questions; let questionMarker = index"
+  >
+    <i>{{ questionMarker + 1 }}.</i> {{ question.legend }}
 
-    <ol class="max-w-prose space-y-2 pl-2">
-      <li *ngFor="let answer of question.answers | keyvalue">
-        <i>{{ answer.key | uppercase }}.</i> {{ answer.value }}
-      </li>
-    </ol>
-  </div>
+    <app-radio-button
+      *ngFor="let answer of question.answers | keyvalue"
+      [name]="question.id"
+      [value]="answer.key"
+      [checked]="answer.key === 'c'"
+    >
+      <i>{{ answer.key | uppercase }}.</i> {{ answer.value }}
+    </app-radio-button>
+  </app-radio-group>
+
+  <!-- TODO submit button -->
 </form>

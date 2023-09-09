@@ -1,12 +1,4 @@
-import {Component, Inject, ViewEncapsulation} from '@angular/core';
-import {
-  Question,
-  QUESTIONS_TOKEN,
-  QuestionsArray,
-} from '@app/questions/questions';
-import {TakeQuizFormComponent} from './take-quiz-form/take-quiz-form.component';
-
-type AnswerKey = keyof Question['answers'];
+import {Component, ViewEncapsulation} from '@angular/core';
 
 /**
  * The route for taking the aspect quiz.
@@ -17,14 +9,4 @@ type AnswerKey = keyof Question['answers'];
   styleUrls: ['./take-quiz.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TakeQuizComponent {
-  protected questions: TakeQuizFormComponent<AnswerKey>['questions'];
-
-  constructor(@Inject(QUESTIONS_TOKEN) sourceQuestions: QuestionsArray) {
-    this.questions = sourceQuestions.map(({id, text, answers}) => ({
-      id,
-      legend: text,
-      answers,
-    }));
-  }
-}
+export class TakeQuizComponent {}

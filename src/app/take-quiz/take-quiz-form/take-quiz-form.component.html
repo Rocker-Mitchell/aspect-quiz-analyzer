@@ -5,12 +5,12 @@
     <i>{{ questionMarker + 1 }}.</i> {{ question.legend }}
 
     <app-radio-button
-      *ngFor="let answer of question.answers | keyvalue"
+      *ngFor="let answer of question.answers | keyvalue : sortAnswers"
       [name]="question.id"
       [value]="answer.key"
       [checked]="answer.key === 'c'"
     >
-      <i>{{ answer.key | uppercase }}.</i> {{ answer.value }}
+      <i>{{ answerMarkers[answer.key] }}.</i> {{ answer.value }}
     </app-radio-button>
   </app-radio-group>
 

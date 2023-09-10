@@ -2,16 +2,19 @@
 	import '@fontsource-variable/encode-sans/wdth.css';
 	import '@fontsource-variable/saira/wdth.css';
 	import '../app.css';
-    import Header from './Header.svelte';
+	import type { LayoutData } from './$types';
+	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
+
+	export let data: LayoutData;
 </script>
 
 <div class="grid min-h-full grid-rows-[auto_1fr_auto]">
-    <Header />
-    
-    <main>
-        <slot />
-    </main>
+	<Header links={data.headerLinks} />
 
-    <Footer />
+	<main>
+		<slot />
+	</main>
+
+	<Footer />
 </div>

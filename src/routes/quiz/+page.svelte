@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { quizData } from '$lib/quiz/quiz-data';
+	import Button from '$lib/ui/Button.svelte';
 	import Section from '$lib/ui/Section.svelte';
 
 	const questions: { name: string; legend: string; answers: { value: string; label: string }[] }[] =
@@ -16,7 +18,7 @@
 	<div class="container mx-auto space-y-4">
 		<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
 
-		<form class="mx-auto w-fit space-y-6 p-2">
+		<form method="POST" use:enhance class="mx-auto w-fit space-y-6 p-2">
 			{#each questions as question}
 				<fieldset class="space-y-2">
 					<legend class="max-w-prose">
@@ -38,6 +40,10 @@
 					</div>
 				</fieldset>
 			{/each}
+
+			<div class="py-3 text-center">
+				<Button type="submit">Submit</Button>
+			</div>
 		</form>
 	</div>
 </Section>

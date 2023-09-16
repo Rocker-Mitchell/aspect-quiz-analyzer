@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { HeaderLinks } from './header-links';
-
-	export let links: HeaderLinks;
+	import { headerLinks } from './header-links';
 </script>
 
 <header class="bg-neutral-200">
@@ -12,10 +10,10 @@
 
 		<nav class="grow">
 			<ul class="flex flex-wrap items-center justify-start gap-2">
-				{#each links as link}
+				{#each headerLinks as link}
 					<li class="p-1 text-base leading-5 font-stretch-semi-expanded">
 						<a
-							href="/{link.slug}"
+							href={link.href}
 							class="cursor-pointer decoration-neutral-400 underline-offset-4 hover:underline"
 							>{link.label}</a
 						>

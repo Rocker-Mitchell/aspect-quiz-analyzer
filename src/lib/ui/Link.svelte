@@ -3,10 +3,9 @@
 
 	export let href: string;
 	export let target: HTMLAttributeAnchorTarget | null | undefined = undefined;
-	let addClass: string | undefined = undefined;
-	export { addClass as class };
+	export let inlineBlock = false;
 
-	$: appendClass = addClass || '';
+	$: appendClass = [inlineBlock && 'inline-block'].filter((v): v is string => v !== false).join('');
 </script>
 
 <a {href} {target} class="cursor-pointer text-blue-600 underline {appendClass}"><slot /></a>

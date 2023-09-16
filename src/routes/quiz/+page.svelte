@@ -1,31 +1,19 @@
 <script lang="ts">
+	import { quizData } from '$lib/quiz/quiz-data';
 	import Section from '$lib/ui/Section.svelte';
 
 	const questions: { name: string; legend: string; answers: { value: string; label: string }[] }[] =
-		[
-			{
-				name: 'question',
-				legend: 'A question',
-				answers: [
-					{ value: '1', label: 'One' },
-					{ value: '2', label: 'Two' },
-					{ value: '3', label: 'Three' }
-				]
-			},
-			{
-				name: 'question2',
-				legend: 'Another question',
-				answers: [
-					{ value: '1', label: 'Uno' },
-					{ value: '2', label: 'Dos' },
-					{ value: '3', label: 'Tres' }
-				]
-			}
-		];
+		quizData.map(({ id, legend, answers }) => ({
+			name: id,
+			legend,
+			answers: Object.entries(answers)
+				.map(([value, { label }]) => ({ value, label }))
+				.sort(({ value: aValue }, { value: bValue }) => aValue.localeCompare(bValue))
+		}));
 </script>
 
 <Section>
-	<div class="container mx-auto">
+	<div class="container mx-auto space-y-4">
 		<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
 
 		<form class="mx-auto w-fit space-y-6 p-2">

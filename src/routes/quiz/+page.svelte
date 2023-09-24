@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { quizData } from '$lib/quiz/quiz-data';
+	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
 	import Button from '$lib/ui/Button.svelte';
 	import Section from '$lib/ui/Section.svelte';
 
 	const questions: { name: string; legend: string; answers: { value: string; label: string }[] }[] =
-		quizData.map(({ id, legend, answers }) => ({
+		QUIZ_DATA.map(({ id, legend, answers }) => ({
 			name: id,
 			legend,
 			answers: Object.entries(answers)

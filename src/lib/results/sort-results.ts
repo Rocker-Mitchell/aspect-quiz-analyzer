@@ -1,10 +1,6 @@
 import { ASPECT_ORDER, type Aspect } from '$lib/aspect/aspect';
 import { oppositeAspect } from '$lib/aspect/aspect-wheel';
-
-interface Result {
-	aspect: Aspect;
-	score: number;
-}
+import type { Result } from './result';
 
 function getScoreOrDefault(scores: ReadonlyMap<Aspect, number>, aspect: Aspect): number {
 	return scores.get(aspect) ?? 0;

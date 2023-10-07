@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ButtonLink from '$lib/ui/ButtonLink.svelte';
+	import Button from '$lib/ui/Button.svelte';
 	import Section from '$lib/ui/Section.svelte';
 </script>
 
@@ -18,6 +18,6 @@
 	<div class="container mx-auto space-y-4 bg-neutral-200 px-4 py-8 text-center">
 		<h2 class="text-2xl font-stretch-semi-expanded">Take the quiz here!</h2>
 
-		<ButtonLink href="/quiz">Begin</ButtonLink>
+		<Button type="anchor" href="/quiz">Begin</Button>
 	</div>
 </Section>

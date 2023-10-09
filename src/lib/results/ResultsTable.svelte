@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Aspect } from '$lib/aspect/aspect';
-	import type { Result } from './result';
+	import { sortResults } from './sort-results';
 
-	export let results: Result[];
+	export let scores: ReadonlyMap<Aspect, number>;
+
+	$: results = sortResults(scores);
 
 	const aspectPhrases: Readonly<Record<Aspect, string>> = {
 		[Aspect.Time]: 'Time',
@@ -33,7 +35,7 @@
 				class="border-b border-neutral-200 text-lg font-stretch-semi-expanded first:text-2xl first:leading-relaxed last:border-b-0"
 			>
 				<td class="px-6 py-2 text-left">{aspectPhrases[result.aspect]}</td>
-				<td class="px-6 py-2 text-right">{result.score}</td>
+				<td class="px-6 py-2 text-right tabular-nums">{result.score}</td>
 			</tr>
 		{/each}
 	</tbody>

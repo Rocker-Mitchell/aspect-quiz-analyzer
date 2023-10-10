@@ -1,7 +1,7 @@
 import { Aspect } from './aspect';
 
 /** Aspect wheel, starting 12 o'clock, moving clockwise. */
-const ASPECT_WHEEL = [
+export const ASPECT_WHEEL = [
 	Aspect.Breath,
 	Aspect.Life,
 	Aspect.Light,

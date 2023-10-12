@@ -56,13 +56,15 @@
 <svg viewBox="0 0 {canvasSize} {canvasSize}" class="mx-auto max-w-xs p-2">
 	<g transform="translate({canvasSize / 2},{canvasSize / 2})">
 		{#each resultSectors as sector}
-			<path
-				d={arcGenerator(sector)}
-				data-aspect={sector.data.aspect}
-				class="transition-opacity hover:opacity-80 data-[aspect=blood]:fill-blood data-[aspect=breath]:fill-breath data-[aspect=doom]:fill-doom data-[aspect=heart]:fill-heart data-[aspect=hope]:fill-hope data-[aspect=life]:fill-life data-[aspect=light]:fill-light data-[aspect=mind]:fill-mind data-[aspect=rage]:fill-rage data-[aspect=space]:fill-space data-[aspect=time]:fill-time data-[aspect=void]:fill-void"
-			>
-				<title>{aspectPhrases[sector.data.aspect]}: {sector.data.score}</title>
-			</path>
+			{#if sector.data.score > 0}
+				<path
+					d={arcGenerator(sector)}
+					data-aspect={sector.data.aspect}
+					class="transition-opacity hover:opacity-80 data-[aspect=blood]:fill-blood data-[aspect=breath]:fill-breath data-[aspect=doom]:fill-doom data-[aspect=heart]:fill-heart data-[aspect=hope]:fill-hope data-[aspect=life]:fill-life data-[aspect=light]:fill-light data-[aspect=mind]:fill-mind data-[aspect=rage]:fill-rage data-[aspect=space]:fill-space data-[aspect=time]:fill-time data-[aspect=void]:fill-void"
+				>
+					<title>{aspectPhrases[sector.data.aspect]}: {sector.data.score}</title>
+				</path>
+			{/if}
 		{/each}
 	</g>
 </svg>

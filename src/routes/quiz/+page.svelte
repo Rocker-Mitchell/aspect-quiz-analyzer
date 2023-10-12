@@ -2,19 +2,23 @@
 	import { onMount } from 'svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
+	import { AnswerValue } from '$lib/quiz/answer-value';
 	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
 	import { sessionClear, sessionGet, sessionStore } from '$lib/session-storage/session-storage';
 	import Button from '$lib/ui/Button.svelte';
 	import Section from '$lib/ui/Section.svelte';
 
-	const questions: { name: string; legend: string; answers: { value: string; label: string }[] }[] =
-		QUIZ_DATA.map(({ id, legend, answers }) => ({
-			name: id,
-			legend,
-			answers: Object.entries(answers)
-				.map(([value, { label }]) => ({ value, label }))
-				.sort(({ value: aValue }, { value: bValue }) => aValue.localeCompare(bValue))
-		}));
+	const questions: {
+		name: string;
+		legend: string;
+		answers: { value: AnswerValue; label: string }[];
+	}[] = QUIZ_DATA.map(({ id, legend, answers }) => ({
+		name: id,
+		legend,
+		answers: Object.values(AnswerValue)
+			.map((value) => ({ value, label: answers[value].label }))
+			.sort(({ value: aValue }, { value: bValue }) => aValue.localeCompare(bValue))
+	}));
 
 	const questionBinds: { [key: string]: string | null } = QUIZ_DATA.reduce(
 		(acc, { id }) => Object.assign(acc, { [id]: null }),
@@ -38,6 +42,14 @@
 			questionBinds[key] = null;
 		});
 	};
+
+	const answerValuePhrases: Record<AnswerValue, string> = {
+		[AnswerValue.A]: 'A',
+		[AnswerValue.B]: 'B',
+		[AnswerValue.C]: 'C',
+		[AnswerValue.D]: 'D',
+		[AnswerValue.E]: 'E'
+	};
 </script>
 
 <Section>
@@ -50,9 +62,10 @@
 			on:reset={onReset}
 			class="mx-auto w-fit space-y-6 p-2"
 		>
-			{#each questions as question}
+			{#each questions as question, questionIndex}
 				<fieldset class="space-y-2">
 					<legend class="max-w-prose">
+						<i>{questionIndex + 1}.</i>
 						{question.legend}
 					</legend>
 
@@ -66,7 +79,7 @@
 									bind:group={questionBinds[question.name]}
 									class="mx-2 shrink-0 cursor-pointer"
 								/>
-								<span>{answer.label}</span>
+								<span><i>{answerValuePhrases[answer.value]}.</i> {answer.label}</span>
 							</label>
 						{/each}
 					</div>

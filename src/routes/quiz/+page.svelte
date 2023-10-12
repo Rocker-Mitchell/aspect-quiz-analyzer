@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import type { SubmitFunction } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
 	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
+	import { sessionClear, sessionGet, sessionStore } from '$lib/session-storage/session-storage';
 	import Button from '$lib/ui/Button.svelte';
 	import Section from '$lib/ui/Section.svelte';
 
@@ -12,13 +15,41 @@
 				.map(([value, { label }]) => ({ value, label }))
 				.sort(({ value: aValue }, { value: bValue }) => aValue.localeCompare(bValue))
 		}));
+
+	const questionBinds: { [key: string]: string | null } = QUIZ_DATA.reduce(
+		(acc, { id }) => Object.assign(acc, { [id]: null }),
+		{} as { [key: string]: string | null }
+	);
+
+	onMount(() => {
+		// initialize selected answers from session storage
+		Object.keys(questionBinds).forEach((key) => {
+			questionBinds[key] = sessionGet(key);
+		});
+	});
+
+	const onSubmit: SubmitFunction = ({ formData }) => {
+		formData.forEach((value, key) => sessionStore(key, value.toString()));
+	};
+
+	const onReset = () => {
+		Object.keys(questionBinds).forEach((key) => {
+			sessionClear(key);
+			questionBinds[key] = null;
+		});
+	};
 </script>
 
 <Section>
 	<div class="container mx-auto space-y-4">
 		<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
 
-		<form method="POST" use:enhance class="mx-auto w-fit space-y-6 p-2">
+		<form
+			method="POST"
+			use:enhance={onSubmit}
+			on:reset={onReset}
+			class="mx-auto w-fit space-y-6 p-2"
+		>
 			{#each questions as question}
 				<fieldset class="space-y-2">
 					<legend class="max-w-prose">
@@ -32,6 +63,7 @@
 									type="radio"
 									name={question.name}
 									value={answer.value}
+									bind:group={questionBinds[question.name]}
 									class="mx-2 shrink-0 cursor-pointer"
 								/>
 								<span>{answer.label}</span>
@@ -41,8 +73,9 @@
 				</fieldset>
 			{/each}
 
-			<div class="py-3 text-center">
+			<div class="flex justify-center gap-3 py-3">
 				<Button type="submit">Submit</Button>
+				<Button type="reset">Reset</Button>
 			</div>
 		</form>
 	</div>

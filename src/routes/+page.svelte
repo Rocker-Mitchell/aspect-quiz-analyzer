@@ -1,23 +1,23 @@
 <script lang="ts">
 	import Button from '$lib/ui/Button.svelte';
-	import Section from '$lib/ui/Section.svelte';
 </script>
 
-<Section>
-	<header class="container mx-auto px-2 py-4 text-center">
+<section
+	class="relative flex h-full flex-col justify-center px-2 py-12 before:absolute before:inset-0 before:-z-10 before:bg-[url(aspect-wheel-bg.svg)] before:bg-cover before:bg-center before:opacity-75"
+>
+	<div class="mx-auto w-fit space-y-4 rounded-2xl bg-neutral-50 px-3 py-6 shadow-lg">
 		<h1
-			class="font-saira text-4xl font-bold tracking-tight text-neutral-800 font-stretch-semi-expanded"
+			class="text-center font-saira text-4xl font-bold tracking-tight text-neutral-800 font-stretch-semi-expanded"
 		>
 			Aspect Quiz Analyzer
 		</h1>
-		<p class="font-saira text-lg font-medium opacity-80 font-stretch-semi-expanded">
+
+		<p class="mx-auto max-w-prose text-center">
 			Detailed score analysis of the <span class="inline-block">Extended Zodiac's</span> Aspect quiz
 		</p>
-	</header>
 
-	<div class="container mx-auto space-y-4 bg-neutral-200 px-4 py-8 text-center">
-		<h2 class="text-2xl font-stretch-semi-expanded">Take the quiz here!</h2>
-
-		<Button type="anchor" href="/quiz">Begin</Button>
+		<div class="text-center">
+			<Button type="anchor" href="/quiz">Begin</Button>
+		</div>
 	</div>
-</Section>
+</section>

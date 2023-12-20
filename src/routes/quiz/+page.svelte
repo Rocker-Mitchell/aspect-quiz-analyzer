@@ -6,7 +6,7 @@
 	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
 	import { sessionClear, sessionGet, sessionStore } from '$lib/session-storage/session-storage';
 	import Button from '$lib/ui/Button.svelte';
-	import Section from '$lib/ui/Section.svelte';
+	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
 	const questions: {
 		name: string;
@@ -52,44 +52,37 @@
 	};
 </script>
 
-<Section>
-	<div class="container mx-auto space-y-4">
-		<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
+<SpacedContainerSection>
+	<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
 
-		<form
-			method="POST"
-			use:enhance={onSubmit}
-			on:reset={onReset}
-			class="mx-auto w-fit space-y-6 p-2"
-		>
-			{#each questions as question, questionIndex}
-				<fieldset class="space-y-2">
-					<legend class="max-w-prose">
-						<i>{questionIndex + 1}.</i>
-						{question.legend}
-					</legend>
+	<form method="POST" use:enhance={onSubmit} on:reset={onReset} class="mx-auto w-fit space-y-6 p-2">
+		{#each questions as question, questionIndex}
+			<fieldset class="space-y-2">
+				<legend class="max-w-prose">
+					<i>{questionIndex + 1}.</i>
+					{question.legend}
+				</legend>
 
-					<div class="space-y-2">
-						{#each question.answers as answer}
-							<label class="flex w-fit max-w-prose cursor-pointer items-center">
-								<input
-									type="radio"
-									name={question.name}
-									value={answer.value}
-									bind:group={questionBinds[question.name]}
-									class="mx-2 shrink-0 cursor-pointer"
-								/>
-								<span><i>{answerValuePhrases[answer.value]}.</i> {answer.label}</span>
-							</label>
-						{/each}
-					</div>
-				</fieldset>
-			{/each}
+				<div class="space-y-2">
+					{#each question.answers as answer}
+						<label class="flex w-fit max-w-prose cursor-pointer items-center">
+							<input
+								type="radio"
+								name={question.name}
+								value={answer.value}
+								bind:group={questionBinds[question.name]}
+								class="mx-2 shrink-0 cursor-pointer"
+							/>
+							<span><i>{answerValuePhrases[answer.value]}.</i> {answer.label}</span>
+						</label>
+					{/each}
+				</div>
+			</fieldset>
+		{/each}
 
-			<div class="flex justify-center gap-3 py-3">
-				<Button type="submit">Submit</Button>
-				<Button type="reset">Reset</Button>
-			</div>
-		</form>
-	</div>
-</Section>
+		<div class="flex justify-center gap-3 py-3">
+			<Button type="submit">Submit</Button>
+			<Button type="reset">Reset</Button>
+		</div>
+	</form>
+</SpacedContainerSection>

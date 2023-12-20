@@ -5,7 +5,7 @@
 	import { AnswerValue } from '$lib/quiz/answer-value';
 	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
 	import { sessionClear, sessionGet, sessionStore } from '$lib/session-storage/session-storage';
-	import Button from '$lib/ui/Button.svelte';
+	import BigButton from '$lib/ui/BigButton.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
 	const questions: {
@@ -81,8 +81,8 @@
 		{/each}
 
 		<div class="flex justify-center gap-3 py-3">
-			<Button type="submit">Submit</Button>
-			<Button type="reset">Reset</Button>
+			<BigButton type="submit">Submit</BigButton>
+			<BigButton type="reset">Reset</BigButton>
 		</div>
 	</form>
 </SpacedContainerSection>

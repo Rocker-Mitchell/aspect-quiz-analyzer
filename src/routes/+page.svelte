@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button from '$lib/ui/Button.svelte';
+	import BigButton from '$lib/ui/BigButton.svelte';
 </script>
 
 <section
@@ -17,7 +17,7 @@
 		</p>
 
 		<div class="text-center">
-			<Button type="anchor" href="/quiz">Begin</Button>
+			<BigButton type="anchor" href="/quiz">Begin</BigButton>
 		</div>
 	</div>
 </section>

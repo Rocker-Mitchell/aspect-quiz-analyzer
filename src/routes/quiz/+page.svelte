@@ -55,7 +55,12 @@
 <SpacedContainerSection>
 	<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
 
-	<form method="POST" use:enhance={onSubmit} on:reset={onReset} class="mx-auto w-fit space-y-6 p-2">
+	<form
+		method="POST"
+		use:enhance={onSubmit}
+		on:reset={onReset}
+		class="mx-auto w-fit space-y-8 rounded-2xl bg-neutral-200 px-2 py-4 sm:px-4"
+	>
 		{#each questions as question, questionIndex}
 			<fieldset class="space-y-2">
 				<legend class="max-w-prose">
@@ -80,7 +85,7 @@
 			</fieldset>
 		{/each}
 
-		<div class="flex justify-center gap-3 py-3">
+		<div class="flex justify-center gap-3">
 			<BigButton type="submit">Submit</BigButton>
 			<BigButton type="reset">Reset</BigButton>
 		</div>

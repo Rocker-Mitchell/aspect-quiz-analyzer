@@ -2,6 +2,7 @@ import type { PageLoad } from './$types';
 import { Aspect, isAspect } from '$lib/aspect/aspect';
 
 export const load: PageLoad = ({ url }) => {
+	const href = url.href;
 	const scores = new Map<Aspect, number>();
 	for (const [key, value] of url.searchParams) {
 		if (isAspect(key)) {
@@ -12,6 +13,7 @@ export const load: PageLoad = ({ url }) => {
 	}
 
 	return {
+		href,
 		scores
 	};
 };

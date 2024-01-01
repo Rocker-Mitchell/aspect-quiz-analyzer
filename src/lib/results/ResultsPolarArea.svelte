@@ -53,7 +53,7 @@
 	};
 </script>
 
-<svg viewBox="0 0 {canvasSize} {canvasSize}" class="mx-auto max-w-xs p-2">
+<svg viewBox="0 0 {canvasSize} {canvasSize}" class="w-full rounded-2xl bg-neutral-200 p-2.5">
 	<g transform="translate({canvasSize / 2},{canvasSize / 2})">
 		{#each resultSectors as sector}
 			{#if sector.data.score > 0}

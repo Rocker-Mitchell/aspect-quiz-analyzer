@@ -10,12 +10,14 @@
 	import ZeroStateGraphic from './ZeroStateGraphic.svelte';
 
 	export let data: PageData;
-
-	$: hasScores = Array.from(data.scores.values()).some((s) => s !== 0);
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
 <SpacedContainerSection>
-	{#if hasScores}
+	{#if data.hasScores}
 		<h2 class="text-center text-2xl font-stretch-semi-expanded">See your results below</h2>
 
 		<div class="grid grid-cols-1-max-xs justify-center gap-4 sm:grid-cols-2-max-xs">

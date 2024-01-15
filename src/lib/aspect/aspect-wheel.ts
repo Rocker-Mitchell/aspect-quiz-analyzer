@@ -19,12 +19,17 @@ export const ASPECT_WHEEL = [
 export function oppositeAspect(target: Aspect): Aspect {
 	const targetIndex = ASPECT_WHEEL.indexOf(target);
 	const oppositeIndex = (targetIndex + 6) % 12;
-	return ASPECT_WHEEL[oppositeIndex];
+	// NB index is expected to never be out of range of array; cast type as Aspect
+	return ASPECT_WHEEL[oppositeIndex] as Aspect;
 }
 
 export function adjacentAspects(target: Aspect): { next: Aspect; previous: Aspect } {
 	const targetIndex = ASPECT_WHEEL.indexOf(target);
 	const nextIndex = (targetIndex + 1) % 12;
 	const previousIndex = (targetIndex + 11) % 12;
-	return { next: ASPECT_WHEEL[nextIndex], previous: ASPECT_WHEEL[previousIndex] };
+	// NB indexes are expected to never be out of range of array; cast type as Aspect
+	return {
+		next: ASPECT_WHEEL[nextIndex] as Aspect,
+		previous: ASPECT_WHEEL[previousIndex] as Aspect
+	};
 }

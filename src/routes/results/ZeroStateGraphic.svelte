@@ -3,7 +3,7 @@
 	const radius = canvasSize / 2 - 3;
 </script>
 
-<svg viewBox="0 0 {canvasSize} {canvasSize}" class="mx-auto w-full max-w-[16rem]">
+<svg viewBox="0 0 {canvasSize} {canvasSize}" style:max-width="{canvasSize}px" class="mx-auto">
 	<circle cx="50%" cy="50%" r={radius} class="fill-neutral-700"></circle>
 	<text
 		x="50%"

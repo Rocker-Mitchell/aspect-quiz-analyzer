@@ -6,6 +6,7 @@
 	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
 	import { sessionClear, sessionGet, sessionStore } from '$lib/session-storage/session-storage';
 	import BigButton from '$lib/ui/BigButton.svelte';
+	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
 	const questions: {
@@ -53,7 +54,7 @@
 </script>
 
 <SpacedContainerSection>
-	<h2 class="text-center text-2xl font-stretch-semi-expanded">Take the quiz below</h2>
+	<ProseHeading>Take the quiz below</ProseHeading>
 
 	<form
 		method="POST"

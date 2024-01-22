@@ -4,6 +4,7 @@
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import ResultsTable from '$lib/results/ResultsTable.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
+	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import SmallButton from '$lib/ui/SmallButton.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 	import CopyLinkCta from './CopyLinkCta.svelte';
@@ -18,7 +19,7 @@
 
 <SpacedContainerSection>
 	{#if data.hasScores}
-		<h2 class="text-center text-2xl font-stretch-semi-expanded">See your results below</h2>
+		<ProseHeading>See your results below</ProseHeading>
 
 		<div class="grid grid-cols-1-max-xs justify-center gap-4 sm:grid-cols-2-max-xs">
 			<ResultsTable class="sm:row-span-4" scores={data.scores} />
@@ -42,7 +43,7 @@
 	{:else}
 		<ZeroStateGraphic></ZeroStateGraphic>
 
-		<h2 class="text-center text-2xl font-stretch-semi-expanded">No results</h2>
+		<ProseHeading>No results</ProseHeading>
 
 		<p class="text-center">Try the test again with different answers.</p>
 

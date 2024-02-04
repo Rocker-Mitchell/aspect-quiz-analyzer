@@ -57,8 +57,8 @@
 <table class="w-full {classProp}">
 	<thead class="bg-neutral-200">
 		<tr class="font-saira font-semibold text-neutral-800 font-stretch-semi-expanded">
-			<th class="rounded-tl-lg px-4 py-1.5 text-left [font-weight:inherit]">Aspect</th>
-			<th class="rounded-tr-lg px-4 py-1.5 text-right [font-weight:inherit]">Score</th>
+			<th class="rounded-tl-lg px-4 py-1.5 text-left">Aspect</th>
+			<th class="rounded-tr-lg px-4 py-1.5 text-right">Score</th>
 		</tr>
 	</thead>
 	<tbody>

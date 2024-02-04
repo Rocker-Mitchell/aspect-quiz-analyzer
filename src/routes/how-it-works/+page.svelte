@@ -62,8 +62,8 @@
 	<table class="mx-auto">
 		<thead class="bg-neutral-200">
 			<tr class="font-saira font-semibold text-neutral-800 font-stretch-semi-expanded">
-				<th class="rounded-tl-lg px-4 py-1.5 text-right [font-weight:inherit]">Questions</th>
-				<th class="rounded-tr-lg px-4 py-1.5 text-left [font-weight:inherit]">Aspects</th>
+				<th class="rounded-tl-lg px-4 py-1.5 text-right">Questions</th>
+				<th class="rounded-tr-lg px-4 py-1.5 text-left">Aspects</th>
 			</tr>
 		</thead>
 		<tbody>

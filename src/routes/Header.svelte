@@ -1,7 +1,8 @@
 <script lang="ts">
 	const headerLinks: { href: string; label: string }[] = [
 		{ href: '/', label: 'Home' },
-		{ href: '/quiz', label: 'Take the Quiz' }
+		{ href: '/quiz', label: 'Take the Quiz' },
+		{ href: '/how-it-works', label: 'How It Works' }
 	];
 </script>
 

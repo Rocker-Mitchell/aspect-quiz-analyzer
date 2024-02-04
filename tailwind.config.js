@@ -63,6 +63,9 @@ export default {
 			gridTemplateColumns: {
 				'1-max-xs': 'repeat(1, minmax(0, theme(maxWidth.xs)))',
 				'2-max-xs': 'repeat(2, minmax(0, theme(maxWidth.xs)))'
+			},
+			listStyleType: {
+				alpha: 'upper-alpha'
 			}
 		}
 	},

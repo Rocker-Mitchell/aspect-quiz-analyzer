@@ -13,6 +13,6 @@ export const actions = {
 		);
 		const solvedMap = quizSolver(answers);
 		const searchParams = encodeScoresParam(solvedMap);
-		throw redirect(303, '/results?' + searchParams.toString());
+		redirect(303, '/results?' + searchParams.toString());
 	}
 } satisfies Actions;

@@ -30,6 +30,6 @@ export function decodeScoresParam(searchParams: URLSearchParams): Map<Aspect, nu
 					const parsedScore = parseInt(scoresValue[index] ?? '0');
 					const score = isNaN(parsedScore) ? 0 : parsedScore;
 					return [aspect, score];
-			  });
+				});
 	return new Map(entries);
 }

@@ -20,7 +20,7 @@
 </script>
 
 <SpacedContainerSection>
-	<ProseHeading>How It Works</ProseHeading>
+	<ProseHeading>How it works</ProseHeading>
 
 	<ProseParagraph>
 		The Extended Zodiac test has multiple parts to complete, but the focus of this fan tool is its

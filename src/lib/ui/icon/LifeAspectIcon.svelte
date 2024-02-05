@@ -7,7 +7,7 @@
 <svg
 	viewBox="0 0 300 299"
 	data-size={size !== 'base' ? size : undefined}
-	class="inline-block h-8 w-8 data-[size=lg]:h-12 data-[size=lg]:w-12"
+	class="inline-block size-8 data-[size=lg]:size-12"
 >
 	<title>Life icon</title>
 	<rect x="0" y="0" width="300" height="299" rx="30" class="fill-life" />

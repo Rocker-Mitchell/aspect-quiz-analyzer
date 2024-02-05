@@ -64,14 +64,14 @@
 	>
 		{#each questions as question, questionIndex}
 			<fieldset class="space-y-2">
-				<legend class="max-w-prose">
+				<legend class="max-w-prose text-pretty">
 					<i>{questionIndex + 1}.</i>
 					{question.legend}
 				</legend>
 
 				<div class="space-y-2">
 					{#each question.answers as answer}
-						<label class="flex w-fit max-w-prose cursor-pointer items-center">
+						<label class="flex w-fit max-w-prose cursor-pointer items-center text-pretty">
 							<input
 								type="radio"
 								name={question.name}
@@ -86,7 +86,7 @@
 			</fieldset>
 		{/each}
 
-		<div class="flex justify-center gap-3">
+		<div class="flex flex-wrap justify-center gap-3">
 			<BigButton type="submit">Submit</BigButton>
 			<BigButton type="reset">Reset</BigButton>
 		</div>

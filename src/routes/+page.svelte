@@ -12,7 +12,7 @@
 			Aspect Quiz Analyzer
 		</h1>
 
-		<p class="mx-auto max-w-prose text-center">
+		<p class="mx-auto max-w-prose text-pretty text-center">
 			Detailed score analysis of the <span class="inline-block">Extended Zodiac's</span> Aspect quiz
 		</p>
 

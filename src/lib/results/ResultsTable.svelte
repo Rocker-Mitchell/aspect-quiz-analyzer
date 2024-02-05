@@ -16,9 +16,6 @@
 	import VoidAspectIcon from '$lib/ui/icon/VoidAspectIcon.svelte';
 	import { sortResults } from './sort-results';
 
-	let classProp = '';
-	export { classProp as class };
-
 	export let scores: ReadonlyMap<Aspect, number>;
 
 	$: results = sortResults(scores);
@@ -54,7 +51,7 @@
 	};
 </script>
 
-<table class="w-full {classProp}">
+<table class="w-full">
 	<thead class="bg-neutral-200">
 		<tr class="font-saira font-semibold text-neutral-800 font-stretch-semi-expanded">
 			<th class="rounded-tl-lg px-4 py-1.5 text-left">Aspect</th>

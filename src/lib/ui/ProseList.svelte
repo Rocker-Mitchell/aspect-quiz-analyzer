@@ -1,5 +1,6 @@
 <script lang="ts" generics="T">
 	export let type: 'disc' | 'decimal' | 'alpha' = 'disc';
+	// eslint-disable-next-line no-undef -- no generics eslint parsing yet; see sveltejs/svelte-eslint-parser#306
 	export let items: Array<T> = [];
 
 	$: isOrdered = type !== 'disc';

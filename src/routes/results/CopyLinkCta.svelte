@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import SmallButton from '$lib/ui/SmallButton.svelte';
+	import TooltipNotification from '$lib/ui/TooltipNotification.svelte';
 
 	export let href: string;
 
@@ -47,10 +48,11 @@
 	</SmallButton>
 
 	{#if feedbackMessage.length > 0}
-		<span
+		<div
 			transition:fade={{ duration: 180 }}
-			class="absolute bottom-[calc(100%+theme(space[1]))] left-1/2 z-20 w-max -translate-x-1/2 rounded bg-neutral-500 px-1 py-0.5 text-sm text-white shadow"
-			>{feedbackMessage}</span
+			class="absolute bottom-full left-1/2 z-20 w-max -translate-x-1/2 pb-2"
 		>
+			<TooltipNotification>{feedbackMessage}</TooltipNotification>
+		</div>
 	{/if}
 </div>

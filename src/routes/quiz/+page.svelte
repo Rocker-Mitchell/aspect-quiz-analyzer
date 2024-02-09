@@ -77,7 +77,7 @@
 								name={question.name}
 								value={answer.value}
 								bind:group={questionBinds[question.name]}
-								class="mx-2 shrink-0 cursor-pointer"
+								class="mx-2 shrink-0 cursor-pointer accent-blue-500"
 							/>
 							<span><i>{answerValuePhrases[answer.value]}.</i> {answer.label}</span>
 						</label>
@@ -88,7 +88,7 @@
 
 		<div class="flex flex-wrap justify-center gap-3">
 			<BigButton type="submit">Submit</BigButton>
-			<BigButton type="reset">Reset</BigButton>
+			<BigButton type="reset" variant="neutral">Reset</BigButton>
 		</div>
 	</form>
 </SpacedContainerSection>

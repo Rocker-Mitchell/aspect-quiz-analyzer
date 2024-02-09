@@ -30,13 +30,13 @@
 
 			{#if browser}
 				<div class="space-y-2">
-					<p class="text-center">You can copy &amp; share your results.</p>
+					<p class="text-pretty text-center">You can copy &amp; share your results.</p>
 					<CopyLinkCta href={data.href}></CopyLinkCta>
 				</div>
 			{/if}
 
 			<div class="space-y-2">
-				<p class="text-center">You can take the quiz again, changing your answers.</p>
+				<p class="text-pretty text-center">You can take the quiz again, changing your answers.</p>
 				<div class="text-center">
 					<SmallButton type="anchor" href="/quiz">Begin Again</SmallButton>
 				</div>

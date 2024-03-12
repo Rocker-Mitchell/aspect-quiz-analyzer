@@ -7,6 +7,14 @@
 	import ProseList from '$lib/ui/ProseList.svelte';
 	import ProseParagraph from '$lib/ui/ProseParagraph.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
+	import {
+		TableBody,
+		TableBodyCell,
+		TableBodyRow,
+		TableHead,
+		TableHeadCell,
+		TableRoot
+	} from '$lib/ui/table';
 
 	/** Sample of scores to illustrate points distribution across adjacent & opposite aspects. */
 	const sampleScores = new Map([
@@ -59,40 +67,38 @@
 
 	<ProseParagraph>Each question in the quiz focuses on an opposing pair of aspects.</ProseParagraph>
 
-	<table class="mx-auto">
-		<thead class="bg-neutral-200">
-			<tr class="font-saira font-semibold text-neutral-800 font-stretch-semi-expanded">
-				<th class="rounded-tl-lg px-4 py-1.5 text-right">Questions</th>
-				<th class="rounded-tr-lg px-4 py-1.5 text-left">Aspects</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="px-4 py-2 text-right">1, 2</td>
-				<td class="px-4 py-2 text-left">Breath&ndash;Blood</td>
-			</tr>
-			<tr>
-				<td class="px-4 py-2 text-right">3, 4</td>
-				<td class="px-4 py-2 text-left">Light&ndash;Void</td>
-			</tr>
-			<tr>
-				<td class="px-4 py-2 text-right">5, 6</td>
-				<td class="px-4 py-2 text-left">Time&ndash;Space</td>
-			</tr>
-			<tr>
-				<td class="px-4 py-2 text-right">7, 8</td>
-				<td class="px-4 py-2 text-left">Heart&ndash;Mind</td>
-			</tr>
-			<tr>
-				<td class="px-4 py-2 text-right">9, 10</td>
-				<td class="px-4 py-2 text-left">Hope&ndash;Rage</td>
-			</tr>
-			<tr>
-				<td class="px-4 py-2 text-right">11, 12</td>
-				<td class="px-4 py-2 text-left">Life&ndash;Doom</td>
-			</tr>
-		</tbody>
-	</table>
+	<TableRoot class="mx-auto">
+		<TableHead>
+			<TableHeadCell class="text-right">Questions</TableHeadCell>
+			<TableHeadCell>Aspects</TableHeadCell>
+		</TableHead>
+		<TableBody>
+			<TableBodyRow>
+				<TableBodyCell class="text-right">1, 2</TableBodyCell>
+				<TableBodyCell>Breath&ndash;Blood</TableBodyCell>
+			</TableBodyRow>
+			<TableBodyRow>
+				<TableBodyCell class="text-right">3, 4</TableBodyCell>
+				<TableBodyCell>Light&ndash;Void</TableBodyCell>
+			</TableBodyRow>
+			<TableBodyRow>
+				<TableBodyCell class="text-right">5, 6</TableBodyCell>
+				<TableBodyCell>Time&ndash;Space</TableBodyCell>
+			</TableBodyRow>
+			<TableBodyRow>
+				<TableBodyCell class="text-right">7, 8</TableBodyCell>
+				<TableBodyCell>Heart&ndash;Mind</TableBodyCell>
+			</TableBodyRow>
+			<TableBodyRow>
+				<TableBodyCell class="text-right">9, 10</TableBodyCell>
+				<TableBodyCell>Hope&ndash;Rage</TableBodyCell>
+			</TableBodyRow>
+			<TableBodyRow>
+				<TableBodyCell class="text-right">11, 12</TableBodyCell>
+				<TableBodyCell>Life&ndash;Doom</TableBodyCell>
+			</TableBodyRow>
+		</TableBody>
+	</TableRoot>
 
 	<ProseParagraph>
 		The answers determine an amount of points to give one of the aspects.

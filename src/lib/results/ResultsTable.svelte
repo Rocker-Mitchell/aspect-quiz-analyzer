@@ -14,6 +14,14 @@
 	import SpaceAspectIcon from '$lib/ui/icon/SpaceAspectIcon.svelte';
 	import TimeAspectIcon from '$lib/ui/icon/TimeAspectIcon.svelte';
 	import VoidAspectIcon from '$lib/ui/icon/VoidAspectIcon.svelte';
+	import {
+		TableBody,
+		TableBodyCell,
+		TableBodyRow,
+		TableHead,
+		TableHeadCell,
+		TableRoot
+	} from '$lib/ui/table';
 	import { sortResults } from './sort-results';
 
 	export let scores: ReadonlyMap<Aspect, number>;
@@ -51,22 +59,22 @@
 	};
 </script>
 
-<table class="w-full">
-	<thead class="bg-neutral-200">
-		<tr class="font-saira font-semibold text-neutral-800 font-stretch-semi-expanded">
-			<th class="rounded-tl-lg px-4 py-1.5 text-left">Aspect</th>
-			<th class="rounded-tr-lg px-4 py-1.5 text-right">Score</th>
-		</tr>
-	</thead>
-	<tbody>
+<TableRoot class="w-full">
+	<TableHead>
+		<TableHeadCell>Aspect</TableHeadCell>
+		<TableHeadCell class="text-right">Score</TableHeadCell>
+	</TableHead>
+	<TableBody>
 		{#each results as result, i (result.aspect)}
-			<tr class="text-xl font-stretch-semi-expanded first:text-2xl">
-				<td class="flex items-center gap-2 px-4 py-3">
-					<svelte:component this={aspectIcons[result.aspect]} size={i === 0 ? 'lg' : undefined} />
-					<span>{aspectPhrases[result.aspect]}</span>
-				</td>
-				<td class="px-4 py-3 text-right tabular-nums">{result.score}</td>
-			</tr>
+			<TableBodyRow class="text-xl font-stretch-semi-expanded first:text-2xl">
+				<TableBodyCell>
+					<div class="flex items-center gap-2">
+						<svelte:component this={aspectIcons[result.aspect]} size={i === 0 ? 'lg' : undefined} />
+						<span>{aspectPhrases[result.aspect]}</span>
+					</div>
+				</TableBodyCell>
+				<TableBodyCell class="text-right tabular-nums">{result.score}</TableBodyCell>
+			</TableBodyRow>
 		{/each}
-	</tbody>
-</table>
+	</TableBody>
+</TableRoot>

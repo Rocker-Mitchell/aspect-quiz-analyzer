@@ -1,0 +1,12 @@
+export { default as BloodAspectIcon } from './BloodAspectIcon.svelte';
+export { default as BreathAspectIcon } from './BreathAspectIcon.svelte';
+export { default as DoomAspectIcon } from './DoomAspectIcon.svelte';
+export { default as HeartAspectIcon } from './HeartAspectIcon.svelte';
+export { default as HopeAspectIcon } from './HopeAspectIcon.svelte';
+export { default as LifeAspectIcon } from './LifeAspectIcon.svelte';
+export { default as LightAspectIcon } from './LightAspectIcon.svelte';
+export { default as MindAspectIcon } from './MindAspectIcon.svelte';
+export { default as RageAspectIcon } from './RageAspectIcon.svelte';
+export { default as SpaceAspectIcon } from './SpaceAspectIcon.svelte';
+export { default as TimeAspectIcon } from './TimeAspectIcon.svelte';
+export { default as VoidAspectIcon } from './VoidAspectIcon.svelte';

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { IconSize } from './icon-size';
+	import type { AspectIconSize } from './aspect-icon-size';
 
-	export let size: IconSize = 'base';
+	export let size: AspectIconSize = 'base';
 </script>
 
 <svg
@@ -9,7 +9,6 @@
 	data-size={size !== 'base' ? size : undefined}
 	class="inline-block size-8 data-[size=lg]:size-12"
 >
-	<title>Mind icon</title>
 	<rect x="0" y="0" width="300" height="299" rx="30" class="fill-mind" />
 	<g class="fill-mind-symbol">
 		<ellipse cx="149.8074" cy="163.0881" rx="88.4667" ry="87.9576" />

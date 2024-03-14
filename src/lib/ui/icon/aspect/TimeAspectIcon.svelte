@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { IconSize } from './icon-size';
+	import type { AspectIconSize } from './aspect-icon-size';
 
-	export let size: IconSize = 'base';
+	export let size: AspectIconSize = 'base';
 </script>
 
 <svg
@@ -9,7 +9,6 @@
 	data-size={size !== 'base' ? size : undefined}
 	class="inline-block size-8 data-[size=lg]:size-12"
 >
-	<title>Time icon</title>
 	<rect x="0" y="0" width="300" height="299" rx="30" class="fill-time" />
 	<g class="fill-time-symbol">
 		<ellipse cx="152.6595" cy="151.1278" rx="88.6275" ry="88.6718" />

@@ -22,9 +22,7 @@
 		<ProseHeading>See your results below</ProseHeading>
 
 		<div class="grid grid-cols-1-max-xs justify-center gap-4 sm:grid-cols-2-max-xs">
-			<div class="contents sm:*:row-span-4">
-				<ResultsTable scores={data.scores} />
-			</div>
+			<ResultsTable scores={data.scores} class="sm:row-span-4" />
 
 			<ResultsPolarArea scores={data.scores} />
 

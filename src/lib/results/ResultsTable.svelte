@@ -62,7 +62,7 @@
 	};
 </script>
 
-<TableRoot class="w-full">
+<TableRoot class="w-full {$$props.class}">
 	<TableHead>
 		<TableHeadCell>Aspect</TableHeadCell>
 		<TableHeadCell class="text-right">Score</TableHeadCell>

@@ -22,21 +22,23 @@
 		<ProseHeading>See your results below</ProseHeading>
 
 		<div class="grid grid-cols-1-max-xs justify-center gap-4 sm:grid-cols-2-max-xs">
-			<ResultsTable scores={data.scores} class="sm:row-span-4" />
+			<ResultsTable scores={data.scores} />
 
-			<ResultsPolarArea scores={data.scores} />
+			<div class="space-y-4">
+				<ResultsPolarArea scores={data.scores} />
 
-			{#if browser}
+				{#if browser}
+					<div class="space-y-2">
+						<p class="text-pretty text-center">You can copy &amp; share your results.</p>
+						<CopyLinkCta href={data.href}></CopyLinkCta>
+					</div>
+				{/if}
+
 				<div class="space-y-2">
-					<p class="text-pretty text-center">You can copy &amp; share your results.</p>
-					<CopyLinkCta href={data.href}></CopyLinkCta>
-				</div>
-			{/if}
-
-			<div class="space-y-2">
-				<p class="text-pretty text-center">You can take the quiz again, changing your answers.</p>
-				<div class="text-center">
-					<SmallButton type="anchor" href="/quiz">Begin Again</SmallButton>
+					<p class="text-pretty text-center">You can take the quiz again, changing your answers.</p>
+					<div class="text-center">
+						<SmallButton type="anchor" href="/quiz">Begin Again</SmallButton>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,7 @@
 	import '@fontsource-variable/encode-sans/wdth.css';
 	import '@fontsource-variable/saira/wdth.css';
 	import '../app.css';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { hasHeadDescription } from '$lib/head-data/head-description';
 	import { hasHeadTitle } from '$lib/head-data/head-title';
@@ -13,6 +14,11 @@
 		hasHeadTitle($page.data) && $page.data.title.length > 0
 			? `${$page.data.title} - ${appTitle}`
 			: appTitle;
+
+	onMount(() => {
+		// flag svelte is ready for integration tests
+		document.body.dataset.svelteStarted = 'true';
+	});
 </script>
 
 <svelte:head>

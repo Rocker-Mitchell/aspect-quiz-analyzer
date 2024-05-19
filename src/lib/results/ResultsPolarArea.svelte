@@ -70,6 +70,7 @@
 </script>
 
 <svg
+	data-test-id="resultsPolarArea"
 	viewBox="0 0 {canvasSize} {canvasSize}"
 	style:max-width="{canvasSize}px"
 	class="mx-auto box-content rounded-2xl bg-neutral-200 p-2.5"

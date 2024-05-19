@@ -1,3 +1,4 @@
+/** @type { import("eslint").Linter.Config } */
 module.exports = {
 	root: true,
 	extends: [
@@ -24,6 +25,16 @@ module.exports = {
 			parser: 'svelte-eslint-parser',
 			parserOptions: {
 				parser: '@typescript-eslint/parser'
+			}
+		},
+		{
+			files: 'tests/**',
+			extends: 'plugin:playwright/recommended',
+			parserOptions: {
+				project: ['./tsconfig.json']
+			},
+			rules: {
+				'@typescript-eslint/no-floating-promises': 'warn'
 			}
 		}
 	]

@@ -2,6 +2,7 @@
 	import '@fontsource-variable/encode-sans/wdth.css';
 	import '@fontsource-variable/saira/wdth.css';
 	import '../app.css';
+	import type { Page } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { hasHeadDescription } from '$lib/head-data/head-description';
@@ -9,11 +10,17 @@
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 
-	const appTitle = 'Aspect Quiz Analyzer';
-	$: fullTitle =
-		hasHeadTitle($page.data) && $page.data.title.length > 0
-			? `${$page.data.title} - ${appTitle}`
-			: appTitle;
+	function getTitle(page: Page): string {
+		const base = 'Aspect Quiz Analyzer';
+		const separator = ' - ';
+		if (hasHeadTitle(page.data) && page.data.title.length > 0) {
+			return page.data.title + separator + base;
+		} else if (page.error) {
+			return `${page.status} ${page.error.message}` + separator + base;
+		} else {
+			return base;
+		}
+	}
 
 	onMount(() => {
 		// flag svelte is ready for integration tests
@@ -22,7 +29,7 @@
 </script>
 
 <svelte:head>
-	<title>{fullTitle}</title>
+	<title>{getTitle($page)}</title>
 	{#if hasHeadDescription($page.data)}
 		<meta name="description" content={$page.data.description} />
 	{/if}

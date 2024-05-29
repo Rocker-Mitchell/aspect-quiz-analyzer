@@ -23,7 +23,11 @@ export default tsEslint.config(
 		files: ['**/*.svelte'],
 		languageOptions: {
 			parserOptions: {
-				parser: tsEslint.parser
+				parser: tsEslint.parser,
+				svelteFeatures: {
+					// NB may be changed/removed in minor versions
+					experimentalGenerics: true
+				}
 			}
 		}
 	},

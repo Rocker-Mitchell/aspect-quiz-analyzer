@@ -1,6 +1,12 @@
 <script lang="ts" generics="T">
+	/** The type of marker used in the list. */
 	export let type: 'disc' | 'decimal' | 'alpha' = 'disc';
-	// eslint-disable-next-line no-undef -- no generics eslint parsing yet; see sveltejs/svelte-eslint-parser#306
+	/**
+	 * The items of the list.
+	 *
+	 * Items are looped through and provided via slot props: `item` and `index`.
+	 * Use the `let:` directive and define child content to control how an item is rendered.
+	 */
 	export let items: Array<T> = [];
 
 	$: isOrdered = type !== 'disc';

@@ -1,5 +1,4 @@
 import type { PageLoad } from './$types';
-import type { HeadData } from '$lib/head-data/head-data';
 import { decodeScoresParam } from '$lib/search-params/scores-param';
 
 export const load: PageLoad = ({ url }) => {
@@ -12,5 +11,5 @@ export const load: PageLoad = ({ url }) => {
 		href: url.href,
 		scores,
 		hasScores
-	} satisfies HeadData;
+	};
 };

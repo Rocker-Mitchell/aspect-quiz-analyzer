@@ -5,15 +5,14 @@
 	import type { Page } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { hasHeadDescription } from '$lib/head-data/head-description';
-	import { hasHeadTitle } from '$lib/head-data/head-title';
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 
+	/** Helper method to format the page title. */
 	function getTitle(page: Page): string {
 		const base = 'Aspect Quiz Analyzer';
 		const separator = ' - ';
-		if (hasHeadTitle(page.data) && page.data.title.length > 0) {
+		if (page.data.title !== undefined && page.data.title.length > 0) {
 			return page.data.title + separator + base;
 		} else if (page.error) {
 			return `${page.status} ${page.error.message}` + separator + base;
@@ -30,7 +29,7 @@
 
 <svelte:head>
 	<title>{getTitle($page)}</title>
-	{#if hasHeadDescription($page.data)}
+	{#if $page.data.description !== undefined}
 		<meta name="description" content={$page.data.description} />
 	{/if}
 </svelte:head>

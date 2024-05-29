@@ -1,5 +1,11 @@
 import plugin from 'tailwindcss/plugin';
 
+/**
+ * A Tailwind plugin for a utility class set that applies `font-stretch`.
+ *
+ * The utility comes with theme values (`theme` -> `fontStretch`) and can take arbitrary values
+ * (ex: `font-stretch-[110%]`).
+ */
 export default plugin(
 	function ({ matchUtilities, theme }) {
 		matchUtilities(

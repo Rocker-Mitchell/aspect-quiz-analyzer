@@ -3,6 +3,7 @@
 	import SmallButton from '$lib/ui/SmallButton.svelte';
 	import TooltipNotification from '$lib/ui/TooltipNotification.svelte';
 
+	/** The href to copy to the clipboard. */
 	export let href: string;
 
 	let feedbackMessage = '';

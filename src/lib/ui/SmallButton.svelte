@@ -1,5 +1,7 @@
 <script lang="ts">
+	/** The type of button. */
 	export let type: 'anchor' | 'button' | 'submit' | 'reset' | null | undefined = undefined;
+	/** The href to use when the type is `"anchor"`. */
 	export let href: string | null | undefined = undefined;
 </script>
 

@@ -8,8 +8,11 @@ export const load: PageLoad = ({ url }) => {
 	return {
 		title: hasScores ? 'Your Results' : 'No Results',
 		description: 'Analyze your scores from the Aspect quiz.',
+		/** The page's href. */
 		href: url.href,
+		/** The scores map received. */
 		scores,
+		/** Flag that the received scores have non-zero value(s). */
 		hasScores
 	};
 };

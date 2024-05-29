@@ -4,7 +4,7 @@ import { ASPECT_WHEEL } from '$lib/aspect/aspect-wheel';
 const SCORES_PARAM_KEY = 'scores';
 
 /**
- * Serialize scores for search params.
+ * Serialize a scores map for search params.
  */
 export function encodeScoresParam(scores: ReadonlyMap<Aspect, number>): URLSearchParams {
 	// map scores to aspect wheel order
@@ -18,7 +18,7 @@ export function encodeScoresParam(scores: ReadonlyMap<Aspect, number>): URLSearc
 }
 
 /**
- * Deserialize search params for scores.
+ * Deserialize search params for a scores map.
  */
 export function decodeScoresParam(searchParams: URLSearchParams): Map<Aspect, number> {
 	// zip scores to aspect wheel order

@@ -13,6 +13,9 @@ export enum Aspect {
 	Doom = 'doom'
 }
 
+/**
+ * Aspects by their order of priority.
+ */
 export const ASPECT_ORDER = [
 	Aspect.Time,
 	Aspect.Space,

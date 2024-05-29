@@ -2,10 +2,16 @@ import { ASPECT_ORDER, type Aspect } from '$lib/aspect/aspect';
 import { oppositeAspect } from '$lib/aspect/aspect-wheel';
 import type { Result } from './result';
 
-function getScoreOrDefault(scores: ReadonlyMap<Aspect, number>, aspect: Aspect): number {
+/**
+ * Get an aspect's score from the score map, or zero if the aspect's score isn't set.
+ */
+function getScoreOrZero(scores: ReadonlyMap<Aspect, number>, aspect: Aspect): number {
 	return scores.get(aspect) ?? 0;
 }
 
+/**
+ * Build a function that checks if an aspect is tied with its opposite in the scores map.
+ */
 function getIsTiedWithOppositeFn(scores: ReadonlyMap<Aspect, number>): (aspect: Aspect) => boolean {
 	const tiedMap = new Map<Aspect, boolean>();
 
@@ -13,7 +19,7 @@ function getIsTiedWithOppositeFn(scores: ReadonlyMap<Aspect, number>): (aspect: 
 		if (!tiedMap.has(aspect)) {
 			const opposite = oppositeAspect(aspect);
 
-			const isTied = getScoreOrDefault(scores, aspect) === getScoreOrDefault(scores, opposite);
+			const isTied = getScoreOrZero(scores, aspect) === getScoreOrZero(scores, opposite);
 			tiedMap.set(aspect, isTied);
 			tiedMap.set(opposite, isTied);
 		}
@@ -22,6 +28,9 @@ function getIsTiedWithOppositeFn(scores: ReadonlyMap<Aspect, number>): (aspect: 
 	};
 }
 
+/**
+ * Build a comparator for result objects using a scores map.
+ */
 function getResultCompareFn(scores: ReadonlyMap<Aspect, number>): (a: Result, b: Result) => number {
 	const isTiedWithOpposite = getIsTiedWithOppositeFn(scores);
 
@@ -43,19 +52,19 @@ function getResultCompareFn(scores: ReadonlyMap<Aspect, number>): (a: Result, b:
 }
 
 /**
- * Get sorted score results from given scores.
+ * Get sorted score results from the given scores map.
  *
  * @param scores A map of aspect scores.
- * @returns A sorted array of objects tracking aspects and their scores.
+ * @returns A sorted array of result objects tracking aspects and their scores.
  */
 export function sortResults(scores: ReadonlyMap<Aspect, number>): Result[] {
 	const resultCompare = getResultCompareFn(scores);
 
-	const fullScores = ASPECT_ORDER.map(
+	const results = ASPECT_ORDER.map(
 		(aspect): Result => ({
 			aspect,
-			score: getScoreOrDefault(scores, aspect)
+			score: getScoreOrZero(scores, aspect)
 		})
 	);
-	return fullScores.sort(resultCompare);
+	return results.sort(resultCompare);
 }

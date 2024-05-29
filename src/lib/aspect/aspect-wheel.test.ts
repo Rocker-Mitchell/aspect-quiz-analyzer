@@ -16,7 +16,7 @@ describe('opposite aspect', () => {
 		[Aspect.Space, Aspect.Time],
 		[Aspect.Mind, Aspect.Heart],
 		[Aspect.Hope, Aspect.Rage]
-	])('returns opposite of %o', (aspect, expected) => {
+	])('returns opposite aspect of %o', (aspect, expected) => {
 		expect(oppositeAspect(aspect)).to.equal(expected);
 	});
 });
@@ -35,7 +35,7 @@ describe('adjacent aspects', () => {
 		[Aspect.Space, [Aspect.Void, Aspect.Mind]],
 		[Aspect.Mind, [Aspect.Space, Aspect.Hope]],
 		[Aspect.Hope, [Aspect.Mind, Aspect.Breath]]
-	])('returns adjacents of %o', (aspect, expected) => {
+	])('returns adjacent aspects of %o', (aspect, expected) => {
 		const actual = adjacentAspects(aspect);
 		expect(Object.values(actual)).to.have.members(expected);
 	});

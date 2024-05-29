@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { HTMLAttributeAnchorTarget } from 'svelte/elements';
 
+	/** The link's href. */
 	export let href: string;
+	/** The link's target. */
 	export let target: HTMLAttributeAnchorTarget | null | undefined = undefined;
 </script>
 

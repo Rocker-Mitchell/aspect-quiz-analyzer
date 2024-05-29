@@ -1,6 +1,8 @@
 import { Aspect } from './aspect';
 
-/** Aspect wheel, starting 12 o'clock, moving clockwise. */
+/**
+ * The Aspect wheel, starting 12 o'clock, moving clockwise.
+ */
 export const ASPECT_WHEEL = [
 	Aspect.Breath,
 	Aspect.Life,
@@ -16,6 +18,9 @@ export const ASPECT_WHEEL = [
 	Aspect.Hope
 ] as const;
 
+/**
+ * Get the aspect on the opposite side of the wheel from the given aspect.
+ */
 export function oppositeAspect(target: Aspect): Aspect {
 	const targetIndex = ASPECT_WHEEL.indexOf(target);
 	const oppositeIndex = (targetIndex + 6) % 12;
@@ -23,6 +28,9 @@ export function oppositeAspect(target: Aspect): Aspect {
 	return ASPECT_WHEEL[oppositeIndex] as Aspect;
 }
 
+/**
+ * Get aspects on either side of the given aspect on the wheel.
+ */
 export function adjacentAspects(target: Aspect): { next: Aspect; previous: Aspect } {
 	const targetIndex = ASPECT_WHEEL.indexOf(target);
 	const nextIndex = (targetIndex + 1) % 12;

@@ -1,6 +1,9 @@
 <script lang="ts">
+	/** The type of button. */
 	export let type: 'anchor' | 'button' | 'submit' | 'reset' | null | undefined = undefined;
+	/** The color variation of button. */
 	export let variant: 'yellow' | 'neutral' = 'yellow';
+	/** The href to use when the type is `"anchor"`. */
 	export let href: string | null | undefined = undefined;
 </script>
 

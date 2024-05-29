@@ -1,13 +1,15 @@
 <script lang="ts">
 	import type { AspectIconSize } from './aspect-icon-size';
 
+	/** The size of the icon. */
 	export let size: AspectIconSize = 'base';
 </script>
 
 <svg
 	viewBox="0 0 300 299"
-	data-size={size !== 'base' ? size : undefined}
-	class="inline-block size-8 data-[size=lg]:size-12"
+	class="inline-block"
+	class:size-8={size === 'base'}
+	class:size-12={size === 'lg'}
 >
 	<rect x="0" y="0" width="300" height="299" rx="30" class="fill-void" />
 	<path

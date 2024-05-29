@@ -14,8 +14,10 @@
 
 <svelte:element
 	this={isOrdered ? 'ol' : 'ul'}
-	data-type={type}
-	class="mx-auto w-fit max-w-prose list-inside space-y-1 data-[type=alpha]:list-alpha data-[type=decimal]:list-decimal data-[type=disc]:list-disc"
+	class="mx-auto w-fit max-w-prose list-inside space-y-1"
+	class:list-disc={type === 'disc'}
+	class:list-decimal={type === 'decimal'}
+	class:list-alpha={type === 'alpha'}
 >
 	{#each items as item, index}
 		<li class="marker:italic"><slot {item} {index} /></li>

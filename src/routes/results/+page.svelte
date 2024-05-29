@@ -5,6 +5,7 @@
 	import ResultsTable from '$lib/results/ResultsTable.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
 	import ProseHeading from '$lib/ui/ProseHeading.svelte';
+	import ProseParagraph from '$lib/ui/ProseParagraph.svelte';
 	import SmallButton from '$lib/ui/SmallButton.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 	import CopyLinkCta from './CopyLinkCta.svelte';
@@ -29,13 +30,17 @@
 
 				{#if browser}
 					<div class="space-y-2">
-						<p class="text-pretty text-center">You can copy &amp; share your results.</p>
+						<ProseParagraph class="text-center">
+							You can copy &amp; share your results.
+						</ProseParagraph>
 						<CopyLinkCta href={data.href}></CopyLinkCta>
 					</div>
 				{/if}
 
 				<div class="space-y-2">
-					<p class="text-pretty text-center">You can take the quiz again, changing your answers.</p>
+					<ProseParagraph class="text-center">
+						You can take the quiz again, changing your answers.
+					</ProseParagraph>
 					<div class="text-center">
 						<SmallButton type="anchor" href="/quiz">Begin Again</SmallButton>
 					</div>
@@ -47,7 +52,7 @@
 
 		<ProseHeading>No results</ProseHeading>
 
-		<p class="text-center">Try the test again with different answers.</p>
+		<ProseParagraph class="text-center">Try the test again with different answers.</ProseParagraph>
 
 		<div class="text-center">
 			<BigButton type="anchor" href="/quiz">Begin</BigButton>

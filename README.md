@@ -1,22 +1,10 @@
-# create-svelte
+# Aspect Quiz Analyzer
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A web app to solve and analyze results from answers for the Aspect quiz of the [Extended Zodiac test](http://hs.hiveswap.com/ezodiac/index.php). Built with SvelteKit, Tailwind CSS, and D3.
 
-## Creating a project
+## Local Setup
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once dependencies are installed with `npm install`, start a development server:
 
 ```bash
 npm run dev
@@ -25,14 +13,11 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+Changes can be formatted, linted, checked, and tested:
 
 ```bash
-npm run build
+npm run format
+npm run lint
+npm run check
+npm run test
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

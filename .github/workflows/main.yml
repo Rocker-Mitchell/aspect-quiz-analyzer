@@ -8,15 +8,12 @@ on:
 
 jobs:
   code-lint-check:
-    name: Lint and Check Code
     uses: ./.github/workflows/code-lint-check.yml
 
   vitest:
-    name: Vitest Tests
     needs: code-lint-check
     uses: ./.github/workflows/vitest.yml
 
   playwright:
-    name: Playwright Tests
     needs: code-lint-check
     uses: ./.github/workflows/playwright.yml

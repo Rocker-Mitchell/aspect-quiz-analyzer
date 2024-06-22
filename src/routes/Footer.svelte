@@ -42,7 +42,7 @@
 		<p class="text-balance py-2 text-center">
 			<Link href="http://hs.hiveswap.com/ezodiac/index.php" target="_blank"
 				>The Extended Zodiac</Link
-			> owned by What Pumpkin Games Inc.
+			> by What Pumpkin Games Inc.
 		</p>
 	</div>
 </footer>

@@ -7,3 +7,4 @@ on:
 jobs:
   deploy-preview:
     uses: ./.github/workflows/vercel.yml
+    secrets: inherit

@@ -1,20 +1,27 @@
 name: Vercel Deployments
 
-env:
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 on:
   workflow_call:
     inputs:
       production:
         description: 'Whether to deploy to production instead of a preview. Default is `false`.'
         type: boolean
+    secrets:
+      VERCEL_TOKEN:
+        required: true
+      VERCEL_ORG_ID:
+        required: true
+      VERCEL_PROJECT_ID:
+        required: true
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   vercel-deploy:
-    name: Vercel Deploy ${{ inputs.production && '(Production)' || '(Preview)'}}
+    name: Vercel Deploy ${{ inputs.production && '(Production)' || '(Preview)' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

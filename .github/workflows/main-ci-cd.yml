@@ -1,4 +1,4 @@
-name: Continuous Integration of Main Branch
+name: Main Branch Continuous Integration and Deployment
 
 on:
   push:
@@ -9,11 +9,16 @@ on:
 jobs:
   code-lint-check:
     uses: ./.github/workflows/code-lint-check.yml
-
   vitest:
     needs: code-lint-check
     uses: ./.github/workflows/vitest.yml
-
   playwright:
     needs: code-lint-check
     uses: ./.github/workflows/playwright.yml
+  deploy-prod:
+    needs: [code-lint-check, vitest, playwright]
+    # only deploy for branch push, not for pull requests
+    if: github.event_name == 'push'
+    uses: ./.github/workflows/vercel.yml
+    with:
+      production: true

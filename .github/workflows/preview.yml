@@ -1,0 +1,9 @@
+name: Vercel Preview Deployment
+
+on:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  deploy-preview:
+    uses: ./.github/workflows/vercel.yml

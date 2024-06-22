@@ -5,7 +5,7 @@ on:
 
 jobs:
   playwright:
-    name: Playwright Local Tests
+    name: Playwright Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:

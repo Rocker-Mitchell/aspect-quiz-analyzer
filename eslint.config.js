@@ -47,6 +47,6 @@ export default tsEslint.config(
 		}
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/', 'test-results/', 'playwright-report/']
+		ignores: ['build/', '.svelte-kit/', 'dist/', 'test-results/', 'playwright-report/', '.vercel']
 	}
 );

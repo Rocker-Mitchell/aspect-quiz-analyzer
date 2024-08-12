@@ -31,11 +31,8 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel environment information
-        shell: bash
         run: vercel pull --yes --environment=${{ inputs.production && 'production' || 'preview' }} --token="$VERCEL_TOKEN"
       - name: Build project artifacts
-        shell: bash
-        run: vercel build ${{ inputs.production && '--prod' }} --token="$VERCEL_TOKEN"
+        run: vercel build ${{ inputs.production && '--prod' || '' }} --token="$VERCEL_TOKEN"
       - name: Deploy project artifacts to Vercel
-        shell: bash
-        run: vercel deploy --prebuilt ${{ inputs.production && '--prod' }} --token="$VERCEL_TOKEN"
+        run: vercel deploy --prebuilt ${{ inputs.production && '--prod' || '' }} --token="$VERCEL_TOKEN"

@@ -1,0 +1,17 @@
+@layer base {
+	/*
+	Global styling of semantic elements.
+	*/
+
+	html {
+		height: 100%;
+	}
+
+	body {
+		height: 100%;
+		overflow: auto;
+		font-family: theme(fontFamily.encode-sans);
+		color: theme(colors.neutral[900]);
+		background-color: theme(colors.neutral[50]);
+	}
+}

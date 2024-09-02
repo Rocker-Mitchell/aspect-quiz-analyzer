@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+
+@layer base {
+	/*
+	Remove default font weight for table header cells.
+	*/
+	th {
+		font-weight: inherit;
+	}
+}

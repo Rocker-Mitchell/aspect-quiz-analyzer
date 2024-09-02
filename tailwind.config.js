@@ -60,10 +60,6 @@ export default {
 				'encode-sans': ['"Encode Sans Variable"', ...defaultTheme.fontFamily.sans],
 				saira: ['"Saira Variable"', '"Encode Sans Variable"', ...defaultTheme.fontFamily.sans]
 			},
-			gridTemplateColumns: {
-				'1-max-xs': 'repeat(1, minmax(0, theme(maxWidth.xs)))',
-				'2-max-xs': 'repeat(2, minmax(0, theme(maxWidth.xs)))'
-			},
 			listStyleType: {
 				alpha: 'upper-alpha'
 			}

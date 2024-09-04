@@ -2,7 +2,6 @@
 	import { Aspect } from '$lib/aspect/aspect';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
-	import Link from '$lib/ui/Link.svelte';
 	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import ProseList from '$lib/ui/ProseList.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
@@ -38,20 +37,22 @@
 	</p>
 
 	<p>
-		Two models are known, but the one from <Link
+		Two models are known, but the one from <a
 			href="https://aspect-zodiac-quiz.tumblr.com/post/168155175455/the-definitive-guide-to-the-canon-homestuck-aspect"
-			target="_blank">Aspect Zodiac Quiz Explained</Link
-		> doesn't have as intuitive a points distribution to read for results, with point subtraction possible
-		and neutral answers resulting in non-zero scores. Instead, a model from <Link
+			target="_blank">Aspect Zodiac Quiz Explained</a
+		>
+		doesn't have as intuitive a points distribution to read for results, with point subtraction possible
+		and neutral answers resulting in non-zero scores. Instead, a model from
+		<a
 			href="https://katanahime.tumblr.com/post/168129033014/new-and-improved-extended-zodiac-aspect-quiz"
-			target="_blank">Katanahime</Link
+			target="_blank">Katanahime</a
 		> is used, as it only adds points and has neutral answers resulting in zeros.
 	</p>
 
 	<p>
-		The Extended Zodiac has a page, <Link
+		The Extended Zodiac has a page, <a
 			href="http://hs.hiveswap.com/ezodiac/aboutaspects.php"
-			target="_blank">About Aspects</Link
+			target="_blank">About Aspects</a
 		>, which explains how each aspect is paired to another in opposition, illustrated with a graphic
 		of an Aspect Wheel. The models expand on this by observing each aspect is connected to two
 		others as sharing similarities. Below is a reproduction of the Aspect Wheel: an aspect has an

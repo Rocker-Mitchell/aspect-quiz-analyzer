@@ -8,7 +8,7 @@
 {#if type === 'anchor'}
 	<a
 		{href}
-		class="inline-flex cursor-pointer items-center gap-1 rounded bg-neutral-600 px-1.5 py-1 text-sm font-medium text-white active:brightness-95"
+		class="inline-flex cursor-pointer items-center gap-1 rounded bg-neutral-600 px-1.5 py-1 text-sm font-medium text-white no-underline active:brightness-95"
 	>
 		<slot name="icon" />
 		<span>
@@ -18,7 +18,7 @@
 {:else}
 	<button
 		{type}
-		class="inline-flex cursor-pointer items-center gap-1 rounded bg-neutral-600 px-1.5 py-1 text-sm font-medium text-white active:brightness-95"
+		class="inline-flex cursor-pointer items-center gap-1 rounded bg-neutral-600 px-1.5 py-1 text-sm font-medium text-white no-underline active:brightness-95"
 		on:click
 	>
 		<slot name="icon" />

@@ -11,7 +11,7 @@
 	<a
 		{href}
 		data-variant={variant}
-		class="inline-block cursor-pointer rounded-xl border-2 border-yellow-900/35 bg-yellow-300 px-5 py-2 font-saira text-xl font-semibold uppercase leading-none text-yellow-950 shadow active:translate-y-px active:shadow-sm active:brightness-95 data-[variant=neutral]:border-neutral-800/80 data-[variant=neutral]:bg-neutral-600 data-[variant=neutral]:text-white"
+		class="inline-block cursor-pointer rounded-xl border-2 border-yellow-900/35 bg-yellow-300 px-5 py-2 font-saira text-xl font-semibold uppercase leading-none text-yellow-950 no-underline shadow active:translate-y-px active:shadow-sm active:brightness-95 data-[variant=neutral]:border-neutral-800/80 data-[variant=neutral]:bg-neutral-600 data-[variant=neutral]:text-white"
 		><slot /></a
 	>
 {:else}
@@ -19,7 +19,7 @@
 		{type}
 		on:click
 		data-variant={variant}
-		class="cursor-pointer rounded-xl border-2 border-yellow-900/35 bg-yellow-300 px-5 py-2 font-saira text-xl font-semibold uppercase leading-none text-yellow-950 shadow active:translate-y-px active:shadow-sm active:brightness-95 data-[variant=neutral]:border-neutral-800/80 data-[variant=neutral]:bg-neutral-600 data-[variant=neutral]:text-white"
+		class="cursor-pointer rounded-xl border-2 border-yellow-900/35 bg-yellow-300 px-5 py-2 font-saira text-xl font-semibold uppercase leading-none text-yellow-950 no-underline shadow active:translate-y-px active:shadow-sm active:brightness-95 data-[variant=neutral]:border-neutral-800/80 data-[variant=neutral]:bg-neutral-600 data-[variant=neutral]:text-white"
 		><slot /></button
 	>
 {/if}

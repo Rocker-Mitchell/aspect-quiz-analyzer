@@ -22,4 +22,10 @@
 		max-width: theme(maxWidth.prose);
 		text-wrap: pretty;
 	}
+
+	a {
+		cursor: pointer;
+		color: theme(colors.blue[800]);
+		text-decoration-line: underline;
+	}
 }

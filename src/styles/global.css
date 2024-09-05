@@ -15,6 +15,39 @@
 		background-color: theme(colors.neutral[50]);
 	}
 
+	table {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: left;
+		vertical-align: middle;
+	}
+
+	thead {
+		background-color: theme(colors.neutral[200]);
+		font-family: theme(fontFamily.saira);
+		font-weight: theme(fontWeight.semibold);
+		font-stretch: theme(fontStretch.semi-expanded);
+		color: theme(colors.neutral[800]);
+
+		tr:first-child th {
+			&:first-child {
+				border-top-left-radius: theme(borderRadius.lg);
+			}
+
+			&:last-child {
+				border-top-right-radius: theme(borderRadius.lg);
+			}
+		}
+	}
+
+	th {
+		padding: theme(spacing[1.5]) theme(spacing[4]);
+	}
+
+	td {
+		padding: theme(spacing[3]) theme(spacing[4]);
+	}
+
 	p {
 		margin-left: auto;
 		margin-right: auto;

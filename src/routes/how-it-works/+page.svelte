@@ -5,14 +5,6 @@
 	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import ProseList from '$lib/ui/ProseList.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
-	import {
-		TableBody,
-		TableBodyCell,
-		TableBodyRow,
-		TableHead,
-		TableHeadCell,
-		TableRoot
-	} from '$lib/ui/table';
 
 	/** Sample of scores to illustrate points distribution across adjacent & opposite aspects. */
 	const sampleScores = new Map([
@@ -67,38 +59,40 @@
 
 	<p>Each question in the quiz focuses on an opposing pair of aspects.</p>
 
-	<TableRoot class="mx-auto">
-		<TableHead>
-			<TableHeadCell class="text-right">Questions</TableHeadCell>
-			<TableHeadCell>Aspects</TableHeadCell>
-		</TableHead>
-		<TableBody>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">1, 2</TableBodyCell>
-				<TableBodyCell>Breath&ndash;Blood</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">3, 4</TableBodyCell>
-				<TableBodyCell>Light&ndash;Void</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">5, 6</TableBodyCell>
-				<TableBodyCell>Time&ndash;Space</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">7, 8</TableBodyCell>
-				<TableBodyCell>Heart&ndash;Mind</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">9, 10</TableBodyCell>
-				<TableBodyCell>Hope&ndash;Rage</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">11, 12</TableBodyCell>
-				<TableBodyCell>Life&ndash;Doom</TableBodyCell>
-			</TableBodyRow>
-		</TableBody>
-	</TableRoot>
+	<table>
+		<thead>
+			<tr>
+				<th class="text-right">Questions</th>
+				<th>Aspects</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="text-right">1, 2</td>
+				<td>Breath&ndash;Blood</td>
+			</tr>
+			<tr>
+				<td class="text-right">3, 4</td>
+				<td>Light&ndash;Void</td>
+			</tr>
+			<tr>
+				<td class="text-right">5, 6</td>
+				<td>Time&ndash;Space</td>
+			</tr>
+			<tr>
+				<td class="text-right">7, 8</td>
+				<td>Heart&ndash;Mind</td>
+			</tr>
+			<tr>
+				<td class="text-right">9, 10</td>
+				<td>Hope&ndash;Rage</td>
+			</tr>
+			<tr>
+				<td class="text-right">11, 12</td>
+				<td>Life&ndash;Doom</td>
+			</tr>
+		</tbody>
+	</table>
 
 	<p>The answers determine an amount of points to give one of the aspects.</p>
 

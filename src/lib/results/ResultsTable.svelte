@@ -16,14 +16,6 @@
 		VoidAspectIcon
 	} from '$lib/ui/icon/aspect';
 	import type { AspectIconSize } from '$lib/ui/icon/aspect/aspect-icon-size';
-	import {
-		TableBody,
-		TableBodyCell,
-		TableBodyRow,
-		TableHead,
-		TableHeadCell,
-		TableRoot
-	} from '$lib/ui/table';
 	import { sortResults } from './sort-results';
 
 	export let scores: ReadonlyMap<Aspect, number>;
@@ -62,22 +54,24 @@
 	};
 </script>
 
-<TableRoot class="w-full {$$props.class || ''}">
-	<TableHead>
-		<TableHeadCell>Aspect</TableHeadCell>
-		<TableHeadCell class="text-right">Score</TableHeadCell>
-	</TableHead>
-	<TableBody>
+<table class="w-full {$$props.class || ''}">
+	<thead>
+		<tr>
+			<th>Aspect</th>
+			<th class="text-right">Score</th>
+		</tr>
+	</thead>
+	<tbody>
 		{#each results as result, i (result.aspect)}
-			<TableBodyRow class="text-xl font-stretch-semi-expanded first:text-2xl">
-				<TableBodyCell>
+			<tr class="text-xl font-stretch-semi-expanded first:text-2xl">
+				<td>
 					<div class="flex items-center gap-2">
 						<svelte:component this={aspectIcons[result.aspect]} size={i === 0 ? 'lg' : undefined} />
 						<span>{aspectPhrases[result.aspect]}</span>
 					</div>
-				</TableBodyCell>
-				<TableBodyCell class="text-right tabular-nums">{result.score}</TableBodyCell>
-			</TableBodyRow>
+				</td>
+				<td class="text-right tabular-nums">{result.score}</td>
+			</tr>
 		{/each}
-	</TableBody>
-</TableRoot>
+	</tbody>
+</table>

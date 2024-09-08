@@ -4,7 +4,6 @@
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import ResultsTable from '$lib/results/ResultsTable.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
-	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import SmallButton from '$lib/ui/SmallButton.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 	import CopyLinkCta from './CopyLinkCta.svelte';
@@ -19,7 +18,7 @@
 
 <SpacedContainerSection>
 	{#if data.hasScores}
-		<ProseHeading>See your results below</ProseHeading>
+		<h1>See your results below</h1>
 
 		<div class="sm-two-column">
 			<ResultsTable scores={data.scores} />
@@ -45,7 +44,7 @@
 	{:else}
 		<ZeroStateGraphic></ZeroStateGraphic>
 
-		<ProseHeading>No results</ProseHeading>
+		<h1>No results</h1>
 
 		<p class="text-center">Try the test again with different answers.</p>
 

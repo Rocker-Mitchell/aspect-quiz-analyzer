@@ -48,6 +48,17 @@
 		padding: theme(spacing[3]) theme(spacing[4]);
 	}
 
+	h1 {
+		margin-left: auto;
+		margin-right: auto;
+		width: fit-content;
+		max-width: theme(maxWidth.xl);
+		text-wrap: balance;
+		text-align: center;
+		font-stretch: theme(fontStretch.semi-expanded);
+		@apply text-2xl;
+	}
+
 	p {
 		margin-left: auto;
 		margin-right: auto;

@@ -2,7 +2,6 @@
 	import { Aspect } from '$lib/aspect/aspect';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
-	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import ProseList from '$lib/ui/ProseList.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
@@ -18,7 +17,7 @@
 </script>
 
 <SpacedContainerSection>
-	<ProseHeading>How it works</ProseHeading>
+	<h1>How it works</h1>
 
 	<p>
 		The Extended Zodiac test has multiple parts to complete, but the focus of this fan tool is its

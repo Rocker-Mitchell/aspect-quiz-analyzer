@@ -12,14 +12,8 @@
 	$: isOrdered = type !== 'disc';
 </script>
 
-<svelte:element
-	this={isOrdered ? 'ol' : 'ul'}
-	class="mx-auto w-fit max-w-prose list-inside space-y-1"
-	class:list-disc={type === 'disc'}
-	class:list-decimal={type === 'decimal'}
-	class:list-alpha={type === 'alpha'}
->
+<svelte:element this={isOrdered ? 'ol' : 'ul'} class:list-alpha={type === 'alpha'}>
 	{#each items as item, index}
-		<li class="marker:italic"><slot {item} {index} /></li>
+		<li><slot {item} {index} /></li>
 	{/each}
 </svelte:element>

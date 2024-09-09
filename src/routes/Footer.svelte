@@ -9,7 +9,7 @@
 <footer class="bg-neutral-200 text-sm font-medium text-neutral-800">
 	<div class="container mx-auto space-y-3 px-2 pb-12 pt-6">
 		<nav class="text-neutral-700">
-			<ul class="flex flex-wrap items-center justify-center">
+			<ul class="flex list-none flex-wrap items-center justify-center space-y-0">
 				{#each siteLinks as link}
 					<li class="p-2">
 						<a

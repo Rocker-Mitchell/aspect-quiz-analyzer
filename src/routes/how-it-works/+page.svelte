@@ -2,7 +2,7 @@
 	import { Aspect } from '$lib/aspect/aspect';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
-	import ProseList from '$lib/ui/ProseList.svelte';
+	import ListGenerator from '$lib/ui/ListGenerator.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
 	/** Sample of scores to illustrate points distribution across adjacent & opposite aspects. */
@@ -95,7 +95,7 @@
 
 	<p>The answers determine an amount of points to give one of the aspects.</p>
 
-	<ProseList
+	<ListGenerator
 		type="alpha"
 		items={[
 			'6 points to the aspect',
@@ -107,11 +107,11 @@
 		let:item
 	>
 		{item}
-	</ProseList>
+	</ListGenerator>
 
 	<p>More points are added by the relationships in the Aspect Wheel.</p>
 
-	<ProseList
+	<ListGenerator
 		items={[
 			'Half as much points (3 from 6, 2 from 4) to adjacent aspects',
 			'2 points to the opposite aspect',
@@ -120,7 +120,7 @@
 		let:item
 	>
 		{item}
-	</ProseList>
+	</ListGenerator>
 
 	<figure class="mx-auto space-y-1">
 		<ResultsPolarArea scores={sampleScores}></ResultsPolarArea>
@@ -138,7 +138,7 @@
 		second tiebreaker uses a "priority list" as a final rule on which aspects are sorted higher.
 	</p>
 
-	<ProseList
+	<ListGenerator
 		type="decimal"
 		items={[
 			'Time',
@@ -157,7 +157,7 @@
 		let:item
 	>
 		{item}
-	</ProseList>
+	</ListGenerator>
 
 	<p>
 		The Aspect Quiz Analyzer handles all of these calculations for you, so you can get results by

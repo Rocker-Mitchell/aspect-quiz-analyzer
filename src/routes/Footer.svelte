@@ -6,26 +6,18 @@
 	];
 </script>
 
-<footer class="bg-neutral-200 text-sm font-medium text-neutral-800">
+<footer class="root-footer">
 	<div class="container mx-auto space-y-3 px-2 pb-12 pt-6">
-		<nav class="text-neutral-700">
-			<ul class="flex list-none flex-wrap items-center justify-center space-y-0">
+		<nav>
+			<ul class="site-links">
 				{#each siteLinks as link}
-					<li class="p-2">
-						<a
-							href={link.href}
-							class="text-inherit no-underline hover:text-neutral-900 hover:underline"
-							>{link.label}</a
-						>
+					<li>
+						<a href={link.href}>{link.label}</a>
 					</li>
 				{/each}
 
-				<li class="p-2">
-					<a
-						href="https://github.com/Rocker-Mitchell/aspect-quiz-analyzer"
-						target="_blank"
-						class="text-inherit no-underline hover:text-neutral-900 hover:underline"
-					>
+				<li>
+					<a href="https://github.com/Rocker-Mitchell/aspect-quiz-analyzer" target="_blank">
 						<span class="sr-only">Source code on GitHub</span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -51,3 +43,35 @@
 		</p>
 	</div>
 </footer>
+
+<style lang="postcss">
+	.root-footer {
+		background-color: theme(colors.neutral[200]);
+		font-weight: theme(fontWeight.medium);
+		color: theme(colors.neutral[800]);
+		@apply text-sm;
+	}
+
+	.site-links {
+		display: flex;
+		list-style-type: none;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		@apply space-y-0;
+
+		li {
+			padding: theme(spacing[2]);
+
+			a {
+				color: theme(colors.neutral[700]);
+				text-decoration-line: none;
+
+				&:hover {
+					color: theme(colors.neutral[900]);
+					text-decoration-line: underline;
+				}
+			}
+		}
+	}
+</style>

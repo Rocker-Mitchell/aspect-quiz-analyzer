@@ -87,7 +87,7 @@
 
 		<div class="flex flex-wrap justify-center gap-3">
 			<BigButton type="submit">Submit</BigButton>
-			<BigButton type="reset" variant="neutral">Reset</BigButton>
+			<BigButton type="reset" color="neutral">Reset</BigButton>
 		</div>
 	</form>
 </SpacedContainerSection>

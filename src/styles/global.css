@@ -90,8 +90,22 @@
 	}
 
 	a {
-		cursor: pointer;
 		color: theme(colors.blue[800]);
 		text-decoration-line: underline;
+	}
+
+	button,
+	a:where(.button) {
+		border-radius: theme(borderRadius.DEFAULT);
+		background-color: theme(colors.neutral[600]);
+		padding: theme(spacing[1]) theme(spacing[1.5]);
+		font-weight: theme(fontWeight.medium);
+		color: theme(colors.white);
+		@apply text-sm;
+	}
+
+	a:where(.button) {
+		display: inline-block;
+		text-decoration-line: none;
 	}
 }

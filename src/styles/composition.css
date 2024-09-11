@@ -3,6 +3,12 @@
 	Classes for high-level, flexible layouts.
 	*/
 
+	.inline-flow {
+		display: inline-flex;
+		align-items: var(--inline-flow-align-items, center);
+		gap: var(--inline-flow-gap, theme(spacing[1]));
+	}
+
 	.sm-two-column {
 		display: grid;
 		justify-content: center;

@@ -56,6 +56,9 @@ export default {
 					symbol: '#000'
 				}
 			},
+			content: {
+				empty: "''"
+			},
 			fontFamily: {
 				'encode-sans': ['"Encode Sans Variable"', ...defaultTheme.fontFamily.sans],
 				saira: ['"Saira Variable"', '"Encode Sans Variable"', ...defaultTheme.fontFamily.sans]

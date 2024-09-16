@@ -34,7 +34,7 @@
 	{/if}
 </svelte:head>
 
-<div class="grid min-h-full grid-rows-[auto_1fr_auto]">
+<div class="three-row-cover min-h-full">
 	<Header />
 
 	<main>

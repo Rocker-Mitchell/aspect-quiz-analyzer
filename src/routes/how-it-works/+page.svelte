@@ -2,19 +2,8 @@
 	import { Aspect } from '$lib/aspect/aspect';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
-	import Link from '$lib/ui/Link.svelte';
-	import ProseHeading from '$lib/ui/ProseHeading.svelte';
-	import ProseList from '$lib/ui/ProseList.svelte';
-	import ProseParagraph from '$lib/ui/ProseParagraph.svelte';
+	import ListGenerator from '$lib/ui/ListGenerator.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
-	import {
-		TableBody,
-		TableBodyCell,
-		TableBodyRow,
-		TableHead,
-		TableHeadCell,
-		TableRoot
-	} from '$lib/ui/table';
 
 	/** Sample of scores to illustrate points distribution across adjacent & opposite aspects. */
 	const sampleScores = new Map([
@@ -28,36 +17,38 @@
 </script>
 
 <SpacedContainerSection>
-	<ProseHeading>How it works</ProseHeading>
+	<h1>How it works</h1>
 
-	<ProseParagraph>
+	<p>
 		The Extended Zodiac test has multiple parts to complete, but the focus of this fan tool is its
 		Aspect quiz. Twelve aspects are available, but the quiz only returns the top aspect&mdash;with
 		the quiz logic in a "black box". Fans later figured out scoring models that accurately predict
 		the result of the quiz from given answers. The Aspect Quiz Analyzer takes one scoring model and
 		shows the results for all aspects for deeper analysis.
-	</ProseParagraph>
+	</p>
 
-	<ProseParagraph>
-		Two models are known, but the one from <Link
+	<p>
+		Two models are known, but the one from <a
 			href="https://aspect-zodiac-quiz.tumblr.com/post/168155175455/the-definitive-guide-to-the-canon-homestuck-aspect"
-			target="_blank">Aspect Zodiac Quiz Explained</Link
-		> doesn't have as intuitive a points distribution to read for results, with point subtraction possible
-		and neutral answers resulting in non-zero scores. Instead, a model from <Link
+			target="_blank">Aspect Zodiac Quiz Explained</a
+		>
+		doesn't have as intuitive a points distribution to read for results, with point subtraction possible
+		and neutral answers resulting in non-zero scores. Instead, a model from
+		<a
 			href="https://katanahime.tumblr.com/post/168129033014/new-and-improved-extended-zodiac-aspect-quiz"
-			target="_blank">Katanahime</Link
+			target="_blank">Katanahime</a
 		> is used, as it only adds points and has neutral answers resulting in zeros.
-	</ProseParagraph>
+	</p>
 
-	<ProseParagraph>
-		The Extended Zodiac has a page, <Link
+	<p>
+		The Extended Zodiac has a page, <a
 			href="http://hs.hiveswap.com/ezodiac/aboutaspects.php"
-			target="_blank">About Aspects</Link
+			target="_blank">About Aspects</a
 		>, which explains how each aspect is paired to another in opposition, illustrated with a graphic
 		of an Aspect Wheel. The models expand on this by observing each aspect is connected to two
 		others as sharing similarities. Below is a reproduction of the Aspect Wheel: an aspect has an
 		opposite following the diameter and has two adjacent aspects flanking it along the curve.
-	</ProseParagraph>
+	</p>
 
 	<img
 		src="aspect-wheel.svg"
@@ -65,46 +56,46 @@
 		class="mx-auto rounded-2xl bg-neutral-200 p-2.5"
 	/>
 
-	<ProseParagraph>Each question in the quiz focuses on an opposing pair of aspects.</ProseParagraph>
+	<p>Each question in the quiz focuses on an opposing pair of aspects.</p>
 
-	<TableRoot class="mx-auto">
-		<TableHead>
-			<TableHeadCell class="text-right">Questions</TableHeadCell>
-			<TableHeadCell>Aspects</TableHeadCell>
-		</TableHead>
-		<TableBody>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">1, 2</TableBodyCell>
-				<TableBodyCell>Breath&ndash;Blood</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">3, 4</TableBodyCell>
-				<TableBodyCell>Light&ndash;Void</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">5, 6</TableBodyCell>
-				<TableBodyCell>Time&ndash;Space</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">7, 8</TableBodyCell>
-				<TableBodyCell>Heart&ndash;Mind</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">9, 10</TableBodyCell>
-				<TableBodyCell>Hope&ndash;Rage</TableBodyCell>
-			</TableBodyRow>
-			<TableBodyRow>
-				<TableBodyCell class="text-right">11, 12</TableBodyCell>
-				<TableBodyCell>Life&ndash;Doom</TableBodyCell>
-			</TableBodyRow>
-		</TableBody>
-	</TableRoot>
+	<table>
+		<thead>
+			<tr>
+				<th class="text-right">Questions</th>
+				<th>Aspects</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="text-right">1, 2</td>
+				<td>Breath&ndash;Blood</td>
+			</tr>
+			<tr>
+				<td class="text-right">3, 4</td>
+				<td>Light&ndash;Void</td>
+			</tr>
+			<tr>
+				<td class="text-right">5, 6</td>
+				<td>Time&ndash;Space</td>
+			</tr>
+			<tr>
+				<td class="text-right">7, 8</td>
+				<td>Heart&ndash;Mind</td>
+			</tr>
+			<tr>
+				<td class="text-right">9, 10</td>
+				<td>Hope&ndash;Rage</td>
+			</tr>
+			<tr>
+				<td class="text-right">11, 12</td>
+				<td>Life&ndash;Doom</td>
+			</tr>
+		</tbody>
+	</table>
 
-	<ProseParagraph>
-		The answers determine an amount of points to give one of the aspects.
-	</ProseParagraph>
+	<p>The answers determine an amount of points to give one of the aspects.</p>
 
-	<ProseList
+	<ListGenerator
 		type="alpha"
 		items={[
 			'6 points to the aspect',
@@ -116,11 +107,11 @@
 		let:item
 	>
 		{item}
-	</ProseList>
+	</ListGenerator>
 
-	<ProseParagraph>More points are added by the relationships in the Aspect Wheel.</ProseParagraph>
+	<p>More points are added by the relationships in the Aspect Wheel.</p>
 
-	<ProseList
+	<ListGenerator
 		items={[
 			'Half as much points (3 from 6, 2 from 4) to adjacent aspects',
 			'2 points to the opposite aspect',
@@ -129,7 +120,7 @@
 		let:item
 	>
 		{item}
-	</ProseList>
+	</ListGenerator>
 
 	<figure class="mx-auto space-y-1">
 		<ResultsPolarArea scores={sampleScores}></ResultsPolarArea>
@@ -140,14 +131,14 @@
 		</figcaption>
 	</figure>
 
-	<ProseParagraph>
+	<p>
 		Points are collected from the answers and summed together. Scores are then sorted by the highest
 		value, with two tiebreakers checked when scores are equal. The first tiebreaker evaluates if
 		aspects are tied with their opposites; those not tied with an opposite are sorted higher. The
 		second tiebreaker uses a "priority list" as a final rule on which aspects are sorted higher.
-	</ProseParagraph>
+	</p>
 
-	<ProseList
+	<ListGenerator
 		type="decimal"
 		items={[
 			'Time',
@@ -166,13 +157,13 @@
 		let:item
 	>
 		{item}
-	</ProseList>
+	</ListGenerator>
 
-	<ProseParagraph>
+	<p>
 		The Aspect Quiz Analyzer handles all of these calculations for you, so you can get results by
 		highest score, with ties handled, and with a visualization of scores arranged by the Aspect
 		Wheel. Try it out by clicking below!
-	</ProseParagraph>
+	</p>
 
 	<div class="text-center">
 		<BigButton type="anchor" href="/quiz">Begin</BigButton>

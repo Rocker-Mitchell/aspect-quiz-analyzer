@@ -6,7 +6,6 @@
 	import { QUIZ_DATA } from '$lib/quiz/quiz-data';
 	import { sessionClear, sessionGet, sessionStore } from '$lib/session-storage/session-storage';
 	import BigButton from '$lib/ui/BigButton.svelte';
-	import ProseHeading from '$lib/ui/ProseHeading.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
 	const questions: {
@@ -54,41 +53,34 @@
 </script>
 
 <SpacedContainerSection>
-	<ProseHeading>Take the quiz below</ProseHeading>
+	<h1>Take the quiz below</h1>
 
-	<form
-		method="POST"
-		use:enhance={onSubmit}
-		on:reset={onReset}
-		class="mx-auto w-fit space-y-8 rounded-2xl bg-neutral-200 px-2 py-4 sm:px-4"
-	>
+	<form method="POST" use:enhance={onSubmit} on:reset={onReset} class="space-y-8">
 		{#each questions as question, questionIndex}
 			<fieldset class="space-y-2">
-				<legend class="max-w-prose text-pretty">
+				<legend>
 					<i>{questionIndex + 1}.</i>
 					{question.legend}
 				</legend>
 
-				<div class="space-y-2">
-					{#each question.answers as answer}
-						<label class="flex w-fit max-w-prose cursor-pointer items-center text-pretty">
-							<input
-								type="radio"
-								name={question.name}
-								value={answer.value}
-								bind:group={questionBinds[question.name]}
-								class="mx-2 shrink-0 cursor-pointer accent-blue-500"
-							/>
-							<span><i>{answerValuePhrases[answer.value]}.</i> {answer.label}</span>
-						</label>
-					{/each}
-				</div>
+				{#each question.answers as answer}
+					<label class="flex items-center">
+						<input
+							type="radio"
+							name={question.name}
+							value={answer.value}
+							bind:group={questionBinds[question.name]}
+							class="mx-2 shrink-0"
+						/>
+						<span><i>{answerValuePhrases[answer.value]}.</i> {answer.label}</span>
+					</label>
+				{/each}
 			</fieldset>
 		{/each}
 
-		<div class="flex flex-wrap justify-center gap-3">
+		<div class="cluster">
 			<BigButton type="submit">Submit</BigButton>
-			<BigButton type="reset" variant="neutral">Reset</BigButton>
+			<BigButton type="reset" color="neutral">Reset</BigButton>
 		</div>
 	</form>
 </SpacedContainerSection>

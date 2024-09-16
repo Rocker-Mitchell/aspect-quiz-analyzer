@@ -48,6 +48,43 @@
 		padding: theme(spacing[3]) theme(spacing[4]);
 	}
 
+	form {
+		margin-left: auto;
+		margin-right: auto;
+		width: fit-content;
+		border-radius: theme(borderRadius.2xl);
+		background-color: theme(colors.neutral[200]);
+		padding: theme(spacing[4]) theme(spacing[2]);
+		@apply space-y-8;
+
+		@media screen(sm) {
+			padding-left: theme(spacing[4]);
+			padding-right: theme(spacing[4]);
+		}
+	}
+
+	fieldset {
+		@apply space-y-2;
+	}
+
+	legend {
+		width: fit-content;
+		max-width: theme(maxWidth.prose);
+		text-wrap: pretty;
+	}
+
+	label {
+		width: fit-content;
+		max-width: theme(maxWidth.prose);
+		cursor: pointer;
+		text-wrap: pretty;
+	}
+
+	input[type='radio'] {
+		cursor: pointer;
+		accent-color: theme(colors.blue[500]);
+	}
+
 	ul,
 	ol {
 		margin-left: auto;

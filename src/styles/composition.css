@@ -3,6 +3,14 @@
 	Classes for high-level, flexible layouts.
 	*/
 
+	.cluster {
+		display: flex;
+		flex-wrap: var(--cluster-wrap, wrap);
+		align-items: var(--cluster-align-items, center);
+		justify-content: var(--cluster-justify-content, center);
+		gap: var(--cluster-gap, theme(spacing[3]));
+	}
+
 	.inline-flow {
 		display: inline-flex;
 		align-items: var(--inline-flow-align-items, center);

@@ -17,6 +17,11 @@
 		gap: var(--inline-flow-gap, theme(spacing[1]));
 	}
 
+	.three-row-cover {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+	}
+
 	.sm-two-column {
 		display: grid;
 		justify-content: center;

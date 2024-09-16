@@ -11,10 +11,10 @@
 		gap: var(--cluster-gap, theme(spacing[3]));
 	}
 
-	.inline-flow {
+	.inline-cluster {
 		display: inline-flex;
-		align-items: var(--inline-flow-align-items, center);
-		gap: var(--inline-flow-gap, theme(spacing[1]));
+		align-items: var(--inline-cluster-align-items, center);
+		gap: var(--inline-cluster-gap, theme(spacing[1]));
 	}
 
 	.three-row-cover {

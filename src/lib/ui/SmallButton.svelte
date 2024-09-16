@@ -6,14 +6,14 @@
 </script>
 
 {#if type === 'anchor'}
-	<a {href} class="button inline-flow active:brightness-95">
+	<a {href} class="button inline-cluster active:brightness-95">
 		<slot name="icon" />
 		<span>
 			<slot />
 		</span>
 	</a>
 {:else}
-	<button {type} class="inline-flow active:brightness-95" on:click>
+	<button {type} class="inline-cluster active:brightness-95" on:click>
 		<slot name="icon" />
 		<span>
 			<slot />

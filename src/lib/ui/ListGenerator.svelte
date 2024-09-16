@@ -40,7 +40,11 @@ Example:
 	$: isOrdered = type !== 'disc';
 </script>
 
-<svelte:element this={isOrdered ? 'ol' : 'ul'} class:list-alpha={type === 'alpha'}>
+<svelte:element
+	this={isOrdered ? 'ol' : 'ul'}
+	class="space-y-1"
+	class:list-alpha={type === 'alpha'}
+>
 	{#each items as item, index}
 		<li><slot {item} {index} /></li>
 	{/each}

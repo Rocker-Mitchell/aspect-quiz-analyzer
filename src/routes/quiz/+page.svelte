@@ -55,9 +55,9 @@
 <SpacedContainerSection>
 	<h1>Take the quiz below</h1>
 
-	<form method="POST" use:enhance={onSubmit} on:reset={onReset}>
+	<form method="POST" use:enhance={onSubmit} on:reset={onReset} class="space-y-8">
 		{#each questions as question, questionIndex}
-			<fieldset>
+			<fieldset class="space-y-2">
 				<legend>
 					<i>{questionIndex + 1}.</i>
 					{question.legend}

@@ -58,7 +58,6 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		@apply space-y-0;
 
 		li {
 			padding: theme(spacing[2]);

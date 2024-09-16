@@ -55,16 +55,11 @@
 		border-radius: theme(borderRadius.2xl);
 		background-color: theme(colors.neutral[200]);
 		padding: theme(spacing[4]) theme(spacing[2]);
-		@apply space-y-8;
 
 		@media screen(sm) {
 			padding-left: theme(spacing[4]);
 			padding-right: theme(spacing[4]);
 		}
-	}
-
-	fieldset {
-		@apply space-y-2;
 	}
 
 	legend {
@@ -92,7 +87,6 @@
 		width: fit-content;
 		max-width: theme(maxWidth.prose);
 		list-style-position: inside;
-		@apply space-y-1;
 	}
 
 	ul {

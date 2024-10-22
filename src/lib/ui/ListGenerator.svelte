@@ -4,9 +4,8 @@ A semantic list generator.
 
 The appropriate 'ul'/'ol' element is used based on the marker type.
 
-The given items will be iterated and provided back with their index through
-default slot props: `item` and `index`. The parent must use child content to
-template how items render, while the generator ensures each is wrapped in a
+The given items will be iterated and passed to the `listItem` snippet (item,
+then its index in `items`). The generator ensures each item is wrapped in a
 'li' element.
 
 Example:
@@ -17,27 +16,37 @@ Example:
 			'thing',
 			2
 		]}
-		let:item
-		let:index
 	>
-		{index}: {item}
+		{#snippet listItem(item, index)}
+			{index}: {item}
+		{/snippet}
 	</ListGenerator>
 	```
 -->
 
 <script lang="ts" generics="T">
-	/** The type of marker used in the list. Defaults to 'disc'. */
-	export let type: 'disc' | 'decimal' | 'alpha' = 'disc';
-	/**
-	 * The items of the list.
-	 *
-	 * Items are iterated through and provided back via default slot props:
-	 * `item` and `index`. Define child content to template how each item is
-	 * rendered.
-	 */
-	export let items: Array<T> = [];
+	import type { Snippet } from 'svelte';
 
-	$: isOrdered = type !== 'disc';
+	let {
+		type = 'disc',
+		items,
+		listItem
+	}: {
+		/** The type of marker used in the list. Defaults to 'disc'. */
+		type?: 'disc' | 'decimal' | 'alpha';
+		/**
+		 * The items of the list.
+		 */
+		items: ReadonlyArray<T>;
+		/**
+		 * The snippet to render as each list item's content.
+		 *
+		 * The snippet is passed the item and its index in `items` as parameters.
+		 */
+		listItem: Snippet<[T, number]>;
+	} = $props();
+
+	let isOrdered = $derived(type !== 'disc');
 </script>
 
 <svelte:element
@@ -46,6 +55,6 @@ Example:
 	class:list-alpha={type === 'alpha'}
 >
 	{#each items as item, index}
-		<li><slot {item} {index} /></li>
+		<li>{@render listItem(item, index)}</li>
 	{/each}
 </svelte:element>

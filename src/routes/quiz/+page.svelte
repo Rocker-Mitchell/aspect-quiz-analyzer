@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" module>
 	import { onMount } from 'svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
@@ -8,10 +8,10 @@
 	import BigButton from '$lib/ui/BigButton.svelte';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
-	const questions: {
-		name: string;
-		legend: string;
-		answers: { value: AnswerValue; label: string }[];
+	const questions: readonly {
+		readonly name: string;
+		readonly legend: string;
+		readonly answers: { readonly value: AnswerValue; readonly label: string }[];
 	}[] = QUIZ_DATA.map(({ id, legend, answers }) => ({
 		name: id,
 		legend,
@@ -20,9 +20,21 @@
 			.sort(({ value: aValue }, { value: bValue }) => aValue.localeCompare(bValue))
 	}));
 
-	const questionBinds: { [key: string]: string | null } = QUIZ_DATA.reduce(
-		(acc, { id }) => Object.assign(acc, { [id]: null }),
-		{} as { [key: string]: string | null }
+	const answerValuePhrases: Readonly<Record<AnswerValue, string>> = {
+		[AnswerValue.A]: 'A',
+		[AnswerValue.B]: 'B',
+		[AnswerValue.C]: 'C',
+		[AnswerValue.D]: 'D',
+		[AnswerValue.E]: 'E'
+	};
+</script>
+
+<script lang="ts">
+	const questionBinds: { [key: string]: string | null } = $state(
+		QUIZ_DATA.reduce(
+			(acc, { id }) => Object.assign(acc, { [id]: null }),
+			{} as { [key: string]: string | null }
+		)
 	);
 
 	onMount(() => {
@@ -32,30 +44,22 @@
 		});
 	});
 
-	const onSubmit: SubmitFunction = ({ formData }) => {
+	const submit: SubmitFunction = ({ formData }) => {
 		formData.forEach((value, key) => sessionStore(key, value.toString()));
 	};
 
-	const onReset = () => {
+	const onreset = () => {
 		Object.keys(questionBinds).forEach((key) => {
 			sessionClear(key);
 			questionBinds[key] = null;
 		});
-	};
-
-	const answerValuePhrases: Record<AnswerValue, string> = {
-		[AnswerValue.A]: 'A',
-		[AnswerValue.B]: 'B',
-		[AnswerValue.C]: 'C',
-		[AnswerValue.D]: 'D',
-		[AnswerValue.E]: 'E'
 	};
 </script>
 
 <SpacedContainerSection>
 	<h1>Take the quiz below</h1>
 
-	<form method="POST" use:enhance={onSubmit} on:reset={onReset} class="space-y-8">
+	<form method="POST" use:enhance={submit} {onreset} class="space-y-8">
 		{#each questions as question, questionIndex}
 			<fieldset class="space-y-2">
 				<legend>

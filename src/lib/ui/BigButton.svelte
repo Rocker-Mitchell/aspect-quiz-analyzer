@@ -1,18 +1,33 @@
 <script lang="ts">
-	/** The type of button. */
-	export let type: 'anchor' | 'button' | 'submit' | 'reset' | null | undefined = undefined;
-	/** The color variation of button. Defaults to 'yellow'. */
-	export let color: 'yellow' | 'neutral' = 'yellow';
-	/** The href to use when the type is `"anchor"`. */
-	export let href: string | null | undefined = undefined;
+	import type { ChildrenProp } from '$lib/props';
+	import type { SharedButtonProps } from './shared-button-props';
 
-	$: activeColor = color !== 'yellow' ? color : undefined;
+	let {
+		color = 'yellow',
+		children,
+		...restProps
+	}: {
+		/** The color variation of button. Defaults to 'yellow'. */
+		color?: 'yellow' | 'neutral';
+	} & SharedButtonProps &
+		ChildrenProp = $props();
+
+	let activeColor = $derived(color !== 'yellow' ? color : undefined);
 </script>
 
-{#if type === 'anchor'}
-	<a {href} data-color={activeColor} class="button big-button"><slot /></a>
+{#if restProps.type === 'anchor'}
+	<a href={restProps.href} data-color={activeColor} class="button big-button">
+		{@render children()}
+	</a>
 {:else}
-	<button {type} data-color={activeColor} class="big-button" on:click><slot /></button>
+	<button
+		type={restProps.type}
+		data-color={activeColor}
+		class="big-button"
+		onclick={restProps.onclick}
+	>
+		{@render children()}
+	</button>
 {/if}
 
 <style lang="postcss">

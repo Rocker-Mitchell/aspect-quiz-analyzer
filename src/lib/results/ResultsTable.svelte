@@ -1,5 +1,5 @@
-<script lang="ts">
-	import type { ComponentType, SvelteComponent } from 'svelte';
+<script lang="ts" module>
+	import type { ClassProp } from '$lib/props';
 	import { Aspect } from '$lib/aspect/aspect';
 	import {
 		BloodAspectIcon,
@@ -13,31 +13,11 @@
 		RageAspectIcon,
 		SpaceAspectIcon,
 		TimeAspectIcon,
-		VoidAspectIcon
+		VoidAspectIcon,
+		type AspectIconComponent
 	} from '$lib/ui/icon/aspect';
-	import type { AspectIconSize } from '$lib/ui/icon/aspect/aspect-icon-size';
 	import { sortResults } from './sort-results';
 
-	export let scores: ReadonlyMap<Aspect, number>;
-
-	$: results = sortResults(scores);
-
-	const aspectIcons: Readonly<
-		Record<Aspect, ComponentType<SvelteComponent<{ size?: AspectIconSize }>>>
-	> = {
-		[Aspect.Time]: TimeAspectIcon,
-		[Aspect.Space]: SpaceAspectIcon,
-		[Aspect.Heart]: HeartAspectIcon,
-		[Aspect.Mind]: MindAspectIcon,
-		[Aspect.Hope]: HopeAspectIcon,
-		[Aspect.Rage]: RageAspectIcon,
-		[Aspect.Light]: LightAspectIcon,
-		[Aspect.Void]: VoidAspectIcon,
-		[Aspect.Breath]: BreathAspectIcon,
-		[Aspect.Blood]: BloodAspectIcon,
-		[Aspect.Life]: LifeAspectIcon,
-		[Aspect.Doom]: DoomAspectIcon
-	};
 	const aspectPhrases: Readonly<Record<Aspect, string>> = {
 		[Aspect.Time]: 'Time',
 		[Aspect.Space]: 'Space',
@@ -52,9 +32,38 @@
 		[Aspect.Life]: 'Life',
 		[Aspect.Doom]: 'Doom'
 	};
+	const aspectIcons: Readonly<Record<Aspect, AspectIconComponent>> = {
+		[Aspect.Time]: TimeAspectIcon,
+		[Aspect.Space]: SpaceAspectIcon,
+		[Aspect.Heart]: HeartAspectIcon,
+		[Aspect.Mind]: MindAspectIcon,
+		[Aspect.Hope]: HopeAspectIcon,
+		[Aspect.Rage]: RageAspectIcon,
+		[Aspect.Light]: LightAspectIcon,
+		[Aspect.Void]: VoidAspectIcon,
+		[Aspect.Breath]: BreathAspectIcon,
+		[Aspect.Blood]: BloodAspectIcon,
+		[Aspect.Life]: LifeAspectIcon,
+		[Aspect.Doom]: DoomAspectIcon
+	};
 </script>
 
-<table class="w-full {$$props.class || ''}">
+<script lang="ts">
+	let { scores, class: classProp }: { scores: ReadonlyMap<Aspect, number> } & ClassProp = $props();
+
+	let results = $derived(sortResults(scores));
+
+	let resultRows = $derived(
+		results.map((rs) => ({
+			id: rs.aspect,
+			phrase: aspectPhrases[rs.aspect],
+			score: rs.score,
+			icon: aspectIcons[rs.aspect]
+		}))
+	);
+</script>
+
+<table class="w-full {classProp}">
 	<thead>
 		<tr>
 			<th>Aspect</th>
@@ -62,15 +71,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each results as result, i (result.aspect)}
+		{#each resultRows as row, i (row.id)}
 			<tr class="text-xl font-stretch-semi-expanded first:text-2xl">
 				<td>
 					<div class="flex items-center gap-2">
-						<svelte:component this={aspectIcons[result.aspect]} size={i === 0 ? 'lg' : undefined} />
-						<span>{aspectPhrases[result.aspect]}</span>
+						<row.icon size={i === 0 ? 'lg' : undefined} />
+						<span>{row.phrase}</span>
 					</div>
 				</td>
-				<td class="text-right tabular-nums">{result.score}</td>
+				<td class="text-right tabular-nums">{row.score}</td>
 			</tr>
 		{/each}
 	</tbody>

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" module>
 	const canvasSize = 256;
 	const radius = canvasSize / 2 - 3;
 </script>

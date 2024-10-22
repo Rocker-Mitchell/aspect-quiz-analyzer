@@ -1,5 +1,11 @@
+<script lang="ts">
+	import type { ChildrenProp } from '$lib/props';
+
+	let { children }: ChildrenProp = $props();
+</script>
+
 <div class="tooltip">
-	<slot />
+	{@render children()}
 	<svg aria-hidden="true" width="12" height="6" viewBox="0 0 12 6" class="tooltip-arrow">
 		<path d="m0 0 6 6 6-6H0Z" />
 	</svg>

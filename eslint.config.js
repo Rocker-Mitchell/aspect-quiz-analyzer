@@ -4,6 +4,7 @@ import tsEslint from 'typescript-eslint';
 import svelte from 'eslint-plugin-svelte';
 import playwright from 'eslint-plugin-playwright';
 import prettier from 'eslint-config-prettier';
+import svelteConfig from './svelte.config.js';
 
 export default tsEslint.config(
 	eslint.configs.recommended,
@@ -23,6 +24,7 @@ export default tsEslint.config(
 		files: ['**/*.svelte'],
 		languageOptions: {
 			parserOptions: {
+				svelteConfig,
 				parser: tsEslint.parser,
 				svelteFeatures: {
 					// NB may be changed/removed in minor versions

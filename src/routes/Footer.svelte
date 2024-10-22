@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" module>
 	const siteLinks: readonly { readonly href: string; readonly label: string }[] = [
 		{ href: '/', label: 'Home' },
 		{ href: '/quiz', label: 'Take the Quiz' },

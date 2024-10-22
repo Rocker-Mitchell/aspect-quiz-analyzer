@@ -1,22 +1,36 @@
 <script lang="ts">
-	/** The type of button. */
-	export let type: 'anchor' | 'button' | 'submit' | 'reset' | null | undefined = undefined;
-	/** The href to use when the type is `"anchor"`. */
-	export let href: string | null | undefined = undefined;
+	import type { Snippet } from 'svelte';
+	import type { ChildrenProp } from '$lib/props';
+	import type { SharedButtonProps } from './shared-button-props';
+
+	let {
+		icon,
+		children,
+		...restProps
+	}: {
+		/** A snippet for additionally rendering an icon in the button. */
+		icon?: Snippet;
+	} & SharedButtonProps &
+		ChildrenProp = $props();
 </script>
 
-{#if type === 'anchor'}
-	<a {href} class="button inline-cluster active:brightness-95">
-		<slot name="icon" />
-		<span>
-			<slot />
-		</span>
+{#snippet inner()}
+	{#if icon}
+		{@render icon()}
+	{/if}
+	<span>{@render children()}</span>
+{/snippet}
+
+{#if restProps.type === 'anchor'}
+	<a href={restProps.href} class="button inline-cluster active:brightness-95">
+		{@render inner()}
 	</a>
 {:else}
-	<button {type} class="inline-cluster active:brightness-95" on:click>
-		<slot name="icon" />
-		<span>
-			<slot />
-		</span>
+	<button
+		type={restProps.type}
+		class="inline-cluster active:brightness-95"
+		onclick={restProps.onclick}
+	>
+		{@render inner()}
 	</button>
 {/if}

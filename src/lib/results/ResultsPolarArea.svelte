@@ -1,20 +1,9 @@
-<script lang="ts">
-	import { scaleSqrt } from 'd3-scale';
-	import { arc, pie, type PieArcDatum, pointRadial } from 'd3-shape';
+<script lang="ts" module>
+	import { scaleSqrt, type ScaleContinuousNumeric } from 'd3-scale';
+	import { arc, pie, pointRadial, type PieArcDatum } from 'd3-shape';
 	import { Aspect } from '$lib/aspect/aspect';
 	import { ASPECT_WHEEL } from '$lib/aspect/aspect-wheel';
 	import type { Result } from './result';
-
-	export let scores: ReadonlyMap<Aspect, number>;
-
-	$: results = ASPECT_WHEEL.map(
-		(aspect): Result => ({
-			aspect,
-			score: scores.get(aspect) ?? 0
-		})
-	);
-	// want the max to never be <= min (0), so add 1 as the minimum max
-	$: maxScore = Math.max(1, ...scores.values());
 
 	const canvasSize = 300;
 	const fontSize = 14;
@@ -27,20 +16,32 @@
 	const innerRadius = (outerRadius * padAngle) / Math.sin((2 * Math.PI) / ASPECT_WHEEL.length);
 	const padRadius = Math.sqrt(innerRadius * innerRadius + outerRadius * outerRadius);
 
-	// generate pie sectors with equal size, the first pointing straight up
+	/** Generator of pie arc data with equal angle size, the first pointing straight up. */
 	const pieGenerator = pie<Result>()
 		.value(1)
 		.startAngle((data) => (-1 * Math.PI) / data.length)
 		.padAngle(padAngle);
 	type ResultArcDatum = PieArcDatum<Result>;
-	$: resultSectors = pieGenerator(results) as ResultArcDatum[];
 
-	$: radiusScale = scaleSqrt([0, maxScore], [innerRadius, outerRadius]).clamp(true);
-	$: arcGenerator = arc<ResultArcDatum>()
+	/**
+	 * Generator of pie arc path data.
+	 *
+	 * An extra argument is expected to be passed for a scale to calculate the
+	 * outer radius.
+	 *
+	 * Prefer {@linkcode getArcData} to satisfy argument type requirements.
+	 */
+	const _arcGenerator = arc<ResultArcDatum>()
 		.innerRadius(innerRadius)
-		.outerRadius(({ data }) => radiusScale(data.score))
+		.outerRadius(({ data }, radiusScale: ScaleContinuousNumeric<number, number>) =>
+			radiusScale(data.score)
+		)
 		.padRadius(padRadius)
 		.cornerRadius(3);
+	/** Wrapper function of arc generator with stricter typing. */
+	function getArcData(data: ResultArcDatum, radiusScale: ScaleContinuousNumeric<number, number>) {
+		return _arcGenerator(data, radiusScale);
+	}
 
 	const aspectPhrases: Readonly<Record<Aspect, string>> = {
 		[Aspect.Time]: 'Time',
@@ -56,17 +57,40 @@
 		[Aspect.Life]: 'Life',
 		[Aspect.Doom]: 'Doom'
 	};
-	$: sectorLabels = results.map(({ aspect, score }, index) => {
-		const angleDeg = (index * 360) / results.length;
-		const coords = pointRadial((angleDeg * Math.PI) / 180, textCenterRadius);
-		return {
-			cx: coords[0],
-			cy: coords[1],
-			// angles that would rotate text upside down should be rotated 180 to be upright
-			angleDeg: angleDeg > 90 && angleDeg < 270 ? angleDeg - 180 : angleDeg,
-			text: aspectPhrases[aspect] + ' ' + score
-		};
-	});
+</script>
+
+<script lang="ts">
+	let { scores }: { scores: ReadonlyMap<Aspect, number> } = $props();
+
+	let results = $derived(
+		ASPECT_WHEEL.map(
+			(aspect): Result => ({
+				aspect,
+				score: scores.get(aspect) ?? 0
+			})
+		)
+	);
+	// want the max to never be <= min (0), so add 1 as the minimum max
+	let maxScore = $derived(Math.max(1, ...scores.values()));
+
+	let resultSectors = $derived(pieGenerator(results));
+
+	/** Scale of scores to a sector radius. */
+	let radiusScale = $derived(scaleSqrt([0, maxScore], [innerRadius, outerRadius]).clamp(true));
+
+	let sectorLabels = $derived(
+		results.map(({ aspect, score }, index, arr) => {
+			const angleDeg = (index * 360) / arr.length;
+			const coords = pointRadial((angleDeg * Math.PI) / 180, textCenterRadius);
+			return {
+				cx: coords[0],
+				cy: coords[1],
+				// angles that would rotate text upside down should be further rotated 180 to be upright
+				angleDeg: angleDeg > 90 && angleDeg < 270 ? angleDeg - 180 : angleDeg,
+				text: aspectPhrases[aspect] + ' ' + score
+			};
+		})
+	);
 </script>
 
 <svg
@@ -79,7 +103,7 @@
 		{#each resultSectors as sector}
 			{#if sector.data.score > 0}
 				<path
-					d={arcGenerator(sector)}
+					d={getArcData(sector, radiusScale)}
 					class:fill-blood={sector.data.aspect === Aspect.Blood}
 					class:fill-breath={sector.data.aspect === Aspect.Breath}
 					class:fill-doom={sector.data.aspect === Aspect.Doom}

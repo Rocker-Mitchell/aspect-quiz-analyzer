@@ -1,3 +1,18 @@
+import type { Component, ComponentProps } from 'svelte';
+import type { ChildrenProp } from '$lib/props';
+import AspectIconBase from './AspectIconBase.svelte';
+
+/**
+ * Props that can be passed to an Aspect icon component.
+ */
+export type AspectIconProps = Omit<
+	ComponentProps<typeof AspectIconBase>,
+	'viewBox' | keyof ChildrenProp
+>;
+
+/** Type for Aspect icon components. */
+export type AspectIconComponent = Component<AspectIconProps>;
+
 export { default as BloodAspectIcon } from './BloodAspectIcon.svelte';
 export { default as BreathAspectIcon } from './BreathAspectIcon.svelte';
 export { default as DoomAspectIcon } from './DoomAspectIcon.svelte';

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" module>
 	import { Aspect } from '$lib/aspect/aspect';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
@@ -6,7 +6,7 @@
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 
 	/** Sample of scores to illustrate points distribution across adjacent & opposite aspects. */
-	const sampleScores = new Map([
+	const sampleScores: ReadonlyMap<Aspect, number> = new Map([
 		[Aspect.Breath, 6],
 		[Aspect.Life, 3],
 		[Aspect.Hope, 3],
@@ -104,9 +104,10 @@
 			'4 points to the opposite',
 			'6 points to the opposite'
 		]}
-		let:item
 	>
-		{item}
+		{#snippet listItem(item)}
+			{item}
+		{/snippet}
 	</ListGenerator>
 
 	<p>More points are added by the relationships in the Aspect Wheel.</p>
@@ -117,9 +118,10 @@
 			'2 points to the opposite aspect',
 			'1 point to aspects adjacent to the opposite'
 		]}
-		let:item
 	>
-		{item}
+		{#snippet listItem(item)}
+			{item}
+		{/snippet}
 	</ListGenerator>
 
 	<figure class="mx-auto space-y-1">
@@ -154,9 +156,10 @@
 			'Life',
 			'Doom'
 		]}
-		let:item
 	>
-		{item}
+		{#snippet listItem(item)}
+			{item}
+		{/snippet}
 	</ListGenerator>
 
 	<p>

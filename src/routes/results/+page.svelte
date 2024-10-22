@@ -9,7 +9,7 @@
 	import CopyLinkCta from './CopyLinkCta.svelte';
 	import ZeroStateGraphic from './ZeroStateGraphic.svelte';
 
-	export let data: PageData;
+	let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>

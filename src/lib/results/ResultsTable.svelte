@@ -52,15 +52,6 @@
 	let { scores, class: classProp }: { scores: ReadonlyMap<Aspect, number> } & ClassProp = $props();
 
 	let results = $derived(sortResults(scores));
-
-	let resultRows = $derived(
-		results.map((rs) => ({
-			id: rs.aspect,
-			phrase: aspectPhrases[rs.aspect],
-			score: rs.score,
-			icon: aspectIcons[rs.aspect]
-		}))
-	);
 </script>
 
 <table class="w-full {classProp}">
@@ -71,15 +62,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each resultRows as row, i (row.id)}
+		{#each results as result, i (result.aspect)}
+			{@const Icon = aspectIcons[result.aspect]}
 			<tr class="text-xl font-stretch-semi-expanded first:text-2xl">
 				<td>
 					<div class="flex items-center gap-2">
-						<row.icon size={i === 0 ? 'lg' : undefined} />
-						<span>{row.phrase}</span>
+						<Icon size={i === 0 ? 'lg' : undefined} />
+						<span>{aspectPhrases[result.aspect]}</span>
 					</div>
 				</td>
-				<td class="text-right tabular-nums">{row.score}</td>
+				<td class="text-right tabular-nums">{result.score}</td>
 			</tr>
 		{/each}
 	</tbody>

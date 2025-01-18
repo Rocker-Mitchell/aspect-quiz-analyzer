@@ -54,7 +54,7 @@
 	let results = $derived(sortResults(scores));
 </script>
 
-<table class="w-full {classProp}">
+<table class={['w-full', classProp]}>
 	<thead>
 		<tr>
 			<th>Aspect</th>

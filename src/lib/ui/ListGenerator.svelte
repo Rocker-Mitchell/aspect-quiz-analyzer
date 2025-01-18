@@ -51,8 +51,7 @@ Example:
 
 <svelte:element
 	this={isOrdered ? 'ol' : 'ul'}
-	class="space-y-1"
-	class:list-alpha={type === 'alpha'}
+	class={['space-y-1', { 'list-alpha': type === 'alpha' }]}
 >
 	{#each items as item, index}
 		<li>{@render listItem(item, index)}</li>

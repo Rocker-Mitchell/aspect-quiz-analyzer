@@ -14,6 +14,6 @@
 	} & ChildrenProp = $props();
 </script>
 
-<svg {viewBox} class="inline-block" class:size-8={size === 'base'} class:size-12={size === 'lg'}>
+<svg {viewBox} class={['inline-block', size === 'lg' ? 'size-12' : 'size-8']}>
 	{@render children()}
 </svg>

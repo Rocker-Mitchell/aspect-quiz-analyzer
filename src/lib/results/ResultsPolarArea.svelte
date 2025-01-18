@@ -43,6 +43,22 @@
 		return _arcGenerator(data, radiusScale);
 	}
 
+	/** Map aspect to sector path CSS classes. */
+	const sectorPathClasses: Readonly<Record<Aspect, string>> = {
+		[Aspect.Time]: 'fill-time',
+		[Aspect.Space]: 'fill-space',
+		[Aspect.Heart]: 'fill-heart',
+		[Aspect.Mind]: 'fill-mind',
+		[Aspect.Hope]: 'fill-hope',
+		[Aspect.Rage]: 'fill-rage',
+		[Aspect.Light]: 'fill-light',
+		[Aspect.Void]: 'fill-void',
+		[Aspect.Breath]: 'fill-breath',
+		[Aspect.Blood]: 'fill-blood',
+		[Aspect.Life]: 'fill-life',
+		[Aspect.Doom]: 'fill-doom'
+	};
+
 	const aspectPhrases: Readonly<Record<Aspect, string>> = {
 		[Aspect.Time]: 'Time',
 		[Aspect.Space]: 'Space',
@@ -102,21 +118,7 @@
 	<g transform="translate({canvasSize / 2},{canvasSize / 2})">
 		{#each resultSectors as sector}
 			{#if sector.data.score > 0}
-				<path
-					d={getArcData(sector, radiusScale)}
-					class:fill-blood={sector.data.aspect === Aspect.Blood}
-					class:fill-breath={sector.data.aspect === Aspect.Breath}
-					class:fill-doom={sector.data.aspect === Aspect.Doom}
-					class:fill-heart={sector.data.aspect === Aspect.Heart}
-					class:fill-hope={sector.data.aspect === Aspect.Hope}
-					class:fill-life={sector.data.aspect === Aspect.Life}
-					class:fill-light={sector.data.aspect === Aspect.Light}
-					class:fill-mind={sector.data.aspect === Aspect.Mind}
-					class:fill-rage={sector.data.aspect === Aspect.Rage}
-					class:fill-space={sector.data.aspect === Aspect.Space}
-					class:fill-time={sector.data.aspect === Aspect.Time}
-					class:fill-void={sector.data.aspect === Aspect.Void}
-				/>
+				<path d={getArcData(sector, radiusScale)} class={sectorPathClasses[sector.data.aspect]} />
 			{/if}
 		{/each}
 		{#each sectorLabels as label}

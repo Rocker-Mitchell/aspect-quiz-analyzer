@@ -3,7 +3,7 @@
 	import '@fontsource-variable/saira/wdth.css';
 	import '../app.css';
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import type { ChildrenProp } from '$lib/props';
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
@@ -13,16 +13,16 @@
 	let title = $derived.by(() => {
 		const base = 'Aspect Quiz Analyzer';
 		const separator = ' - ';
-		if ($page.data.title !== undefined && $page.data.title.length > 0) {
-			return $page.data.title + separator + base;
-		} else if ($page.error) {
-			return `${$page.status} ${$page.error.message}` + separator + base;
+		if (page.data.title !== undefined && page.data.title.length > 0) {
+			return page.data.title + separator + base;
+		} else if (page.error) {
+			return `${page.status} ${page.error.message}` + separator + base;
 		} else {
 			return base;
 		}
 	});
 
-	let description = $derived($page.data.description);
+	let description = $derived(page.data.description);
 
 	onMount(() => {
 		// flag svelte is ready for integration tests

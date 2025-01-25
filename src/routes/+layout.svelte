@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '@fontsource-variable/encode-sans/wdth.css';
 	import '@fontsource-variable/saira/wdth.css';
-	import '../app.css';
+	import '$src/app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import type { ChildrenProp } from '$lib/props';

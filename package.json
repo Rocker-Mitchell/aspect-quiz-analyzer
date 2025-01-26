@@ -13,7 +13,7 @@
 		"test:integration": "playwright test --reporter=dot",
 		"test:integration:ui": "playwright test --ui",
 		"test": "npm run test:unit && npm run test:integration",
-		"lint": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --check . && eslint .",
+		"lint": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --check . && svelte-kit sync && eslint .",
 		"format": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --write ."
 	},
 	"dependencies": {

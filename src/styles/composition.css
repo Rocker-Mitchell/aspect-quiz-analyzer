@@ -1,4 +1,4 @@
-@layer components {
+@layer composition {
 	/*
 	Classes for high-level, flexible layouts.
 	*/
@@ -8,13 +8,13 @@
 		flex-wrap: var(--cluster-wrap, wrap);
 		align-items: var(--cluster-align-items, center);
 		justify-content: var(--cluster-justify-content, center);
-		gap: var(--cluster-gap, theme(spacing[3]));
+		gap: var(--cluster-gap, --spacing(3));
 	}
 
 	.inline-cluster {
 		display: inline-flex;
 		align-items: var(--inline-cluster-align-items, center);
-		gap: var(--inline-cluster-gap, theme(spacing[1]));
+		gap: var(--inline-cluster-gap, --spacing(1));
 	}
 
 	.three-row-cover {
@@ -25,11 +25,19 @@
 	.sm-two-column {
 		display: grid;
 		justify-content: center;
-		gap: var(--sm-two-column-gap, theme(spacing[4]));
-		grid-template-columns: repeat(1, minmax(0, var(--sm-two-column-max-w, theme(maxWidth.xs))));
+		gap: var(--sm-two-column-gap, --spacing(4));
+		grid-template-columns: repeat(1, minmax(0, var(--sm-two-column-max-w, var(--container-xs))));
 
-		@media screen(sm) {
-			grid-template-columns: repeat(2, minmax(0, var(--sm-two-column-max-w, theme(maxWidth.xs))));
+		@media (width >= theme(--breakpoint-sm)) {
+			grid-template-columns: repeat(2, minmax(0, var(--sm-two-column-max-w, var(--container-xs))));
 		}
 	}
+}
+
+/*
+Configure Tailwind's "container" utility to layout with centering and spacing.
+*/
+@utility container {
+	margin-inline: auto;
+	padding: --spacing(2);
 }

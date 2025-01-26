@@ -1,5 +1,6 @@
+@layer theme, base, global, composition, utilities;
+@import './styles/theme.css';
 @import './styles/base.css';
 @import './styles/global.css';
-@import 'tailwindcss/components';
 @import './styles/composition.css';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss/utilities' layer(utilities);

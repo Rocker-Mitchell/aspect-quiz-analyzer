@@ -31,30 +31,32 @@
 {/if}
 
 <style lang="postcss">
+	@reference '$src/app.css';
+
 	.big-button {
-		border-radius: theme(borderRadius.xl);
-		border-width: theme(borderWidth[2]);
-		border-color: theme(colors.yellow[900] / 35%);
-		background-color: theme(colors.yellow[300]);
-		padding: theme(spacing[2]) theme(spacing[5]);
-		font-family: theme(fontFamily.saira);
-		font-size: theme(fontSize.xl);
-		font-weight: theme(fontWeight.semibold);
+		border-radius: var(--radius-xl);
+		border-width: 2px;
+		border-color: --alpha(var(--color-yellow-900) / 35%);
+		background-color: var(--color-yellow-300);
+		padding: --spacing(2) --spacing(5);
+		font-family: var(--font-saira);
+		font-size: var(--text-xl);
+		font-weight: var(--font-weight-semibold);
 		text-transform: uppercase;
-		line-height: theme(lineHeight.none);
-		color: theme(colors.yellow[950]);
-		@apply shadow;
+		line-height: 1;
+		color: var(--color-yellow-950);
+		@apply shadow-sm;
 
 		&[data-color='neutral'] {
-			border-color: theme(colors.neutral[800] / 80%);
-			background-color: theme(colors.neutral[600]);
-			color: theme(colors.white);
+			border-color: --alpha(var(--color-neutral-800) / 80%);
+			background-color: var(--color-neutral-600);
+			color: var(--color-white);
 		}
 
-		&:active {
-			transform: translate(0, theme(spacing.px));
-			filter: brightness(theme(brightness[95]));
-			@apply shadow-sm;
+		@variant active {
+			translate: 0 1px;
+			filter: brightness(95%);
+			@apply shadow-xs;
 		}
 	}
 </style>

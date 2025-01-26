@@ -15,6 +15,8 @@
 </section>
 
 <style lang="postcss">
+	@reference '$src/app.css';
+
 	.hero {
 		position: relative;
 		display: flex;
@@ -22,30 +24,29 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: theme(spacing[12]) theme(spacing[2]);
+		padding: --spacing(12) --spacing(2);
 
-		&::before {
+		@variant before {
 			position: absolute;
 			inset: 0;
-			z-index: calc(-1 * theme(zIndex.10));
+			z-index: -10;
 			background-image: url('/aspect-wheel-bg.svg');
 			background-size: cover;
 			background-position: center;
-			opacity: theme(opacity[75]);
-			@apply content-empty;
+			opacity: 75%;
 		}
 
 		.hero-card {
-			max-width: theme(maxWidth.sm);
-			border-radius: theme(borderRadius.2xl);
-			background-color: theme(colors.neutral[50]);
-			padding: theme(spacing[6]) theme(spacing[3.5]);
+			max-width: var(--container-sm);
+			border-radius: var(--radius-2xl);
+			background-color: var(--color-neutral-50);
+			padding: --spacing(6) --spacing(3.5);
 			text-align: center;
-			font-stretch: theme(fontStretch.semi-expanded);
+			font-stretch: semi-expanded;
 			@apply text-xl;
 
-			@media screen(sm) {
-				max-width: theme(maxWidth.lg);
+			@variant sm {
+				max-width: var(--container-lg);
 				@apply text-2xl;
 			}
 		}

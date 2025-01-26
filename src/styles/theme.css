@@ -1,0 +1,46 @@
+@import 'tailwindcss/theme' layer(theme);
+
+@theme {
+	--color-time: #b70d0e;
+	--color-time-symbol: #ff2106;
+
+	--color-space: #000;
+	--color-space-symbol: #fff;
+
+	--color-heart: #55142a;
+	--color-heart-symbol: #bd1864;
+
+	--color-mind: #00923d;
+	--color-mind-symbol: #06ffc9;
+
+	--color-hope: #ffde55;
+	--color-hope-symbol: #fdfdfd;
+
+	--color-rage: #520c61;
+	--color-rage-symbol: #9c4dad;
+
+	--color-light: #f0840c;
+	--color-light-symbol: #f6fa4e;
+
+	--color-void: #104ea2;
+	--color-void-symbol: #001957;
+
+	--color-breath: #4379e6;
+	--color-breath-symbol: #47dff9;
+
+	--color-blood: #3e1601;
+	--color-blood-symbol: #ba1016;
+
+	--color-life: #a49787;
+	--color-life-symbol: #72eb34;
+
+	--color-doom: #306800;
+	--color-doom-symbol: #000;
+
+	--font-encode-sans: 'Encode Sans Variable', var(--font-sans);
+	--font-saira: 'Saira Variable', 'Encode Sans Variable', var(--font-sans);
+
+	--list-style-type-alpha: upper-alpha;
+
+	--max-width-prose: 65ch;
+}

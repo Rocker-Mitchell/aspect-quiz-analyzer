@@ -11,6 +11,6 @@
 		dominant-baseline="central"
 		text-anchor="middle"
 		font-size="220px"
-		class="translate-x-[8px] fill-blue-50 font-saira font-semibold font-stretch-expanded">?</text
+		class="font-saira translate-x-[8px] fill-blue-50 font-semibold font-stretch-expanded">?</text
 	>
 </svg>

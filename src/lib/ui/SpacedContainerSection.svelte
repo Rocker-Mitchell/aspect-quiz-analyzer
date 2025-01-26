@@ -4,6 +4,6 @@
 	let { children }: ChildrenProp = $props();
 </script>
 
-<section class="container mx-auto mb-8 mt-6 space-y-6 px-2">
+<section class="container mt-4 mb-6 space-y-6">
 	{@render children()}
 </section>

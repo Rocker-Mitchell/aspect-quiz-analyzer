@@ -1,4 +1,4 @@
-@layer base {
+@layer global {
 	/*
 	Global styling of semantic elements.
 	*/
@@ -10,82 +10,78 @@
 	body {
 		height: 100%;
 		overflow: auto;
-		font-family: theme(fontFamily.encode-sans);
-		color: theme(colors.neutral[900]);
-		background-color: theme(colors.neutral[50]);
+		font-family: var(--font-encode-sans);
+		color: var(--color-neutral-900);
+		background-color: var(--color-neutral-50);
 	}
 
 	table {
-		margin-left: auto;
-		margin-right: auto;
+		margin-inline: auto;
 		text-align: left;
 		vertical-align: middle;
 	}
 
 	thead {
-		background-color: theme(colors.neutral[200]);
-		font-family: theme(fontFamily.saira);
-		font-weight: theme(fontWeight.semibold);
-		font-stretch: theme(fontStretch.semi-expanded);
-		color: theme(colors.neutral[800]);
+		background-color: var(--color-neutral-200);
+		font-family: var(--font-saira);
+		font-weight: var(--font-weight-semibold);
+		font-stretch: semi-expanded;
+		color: var(--color-neutral-800);
 
 		tr:first-child th {
 			&:first-child {
-				border-top-left-radius: theme(borderRadius.lg);
+				border-top-left-radius: var(--radius-lg);
 			}
 
 			&:last-child {
-				border-top-right-radius: theme(borderRadius.lg);
+				border-top-right-radius: var(--radius-lg);
 			}
 		}
 	}
 
 	th {
-		padding: theme(spacing[1.5]) theme(spacing[4]);
+		padding: --spacing(1.5) --spacing(4);
 	}
 
 	td {
-		padding: theme(spacing[3]) theme(spacing[4]);
+		padding: --spacing(3) --spacing(4);
 	}
 
 	form {
-		margin-left: auto;
-		margin-right: auto;
+		margin-inline: auto;
 		width: fit-content;
-		border-radius: theme(borderRadius.2xl);
-		background-color: theme(colors.neutral[200]);
-		padding: theme(spacing[4]) theme(spacing[2]);
+		border-radius: var(--radius-2xl);
+		background-color: var(--color-neutral-200);
+		padding: --spacing(4) --spacing(2);
 
-		@media screen(sm) {
-			padding-left: theme(spacing[4]);
-			padding-right: theme(spacing[4]);
+		@variant sm {
+			padding-inline: --spacing(4);
 		}
 	}
 
 	legend {
 		width: fit-content;
-		max-width: theme(maxWidth.prose);
+		max-width: var(--max-width-prose);
 		text-wrap: pretty;
 	}
 
 	label {
 		width: fit-content;
-		max-width: theme(maxWidth.prose);
+		max-width: var(--max-width-prose);
 		cursor: pointer;
 		text-wrap: pretty;
 	}
 
 	input[type='radio'] {
 		cursor: pointer;
-		accent-color: theme(colors.blue[500]);
+		accent-color: var(--color-blue-500);
 	}
 
 	ul,
 	ol {
-		margin-left: auto;
-		margin-right: auto;
+		margin-inline: auto;
 		width: fit-content;
-		max-width: theme(maxWidth.prose);
+		max-width: var(--max-width-prose);
 		list-style-position: inside;
 	}
 
@@ -102,36 +98,36 @@
 	}
 
 	h1 {
-		margin-left: auto;
-		margin-right: auto;
+		margin-inline: auto;
 		width: fit-content;
-		max-width: theme(maxWidth.xl);
+		max-width: var(--container-xl);
 		text-wrap: balance;
 		text-align: center;
-		font-stretch: theme(fontStretch.semi-expanded);
+		font-stretch: semi-expanded;
 		@apply text-2xl;
 	}
 
 	p {
-		margin-left: auto;
-		margin-right: auto;
+		margin-inline: auto;
 		width: fit-content;
-		max-width: theme(maxWidth.prose);
+		max-width: var(--max-width-prose);
 		text-wrap: pretty;
 	}
 
 	a {
-		color: theme(colors.blue[800]);
+		cursor: pointer;
+		color: var(--color-blue-800);
 		text-decoration-line: underline;
 	}
 
 	button,
 	a:where(.button) {
-		border-radius: theme(borderRadius.DEFAULT);
-		background-color: theme(colors.neutral[600]);
-		padding: theme(spacing[1]) theme(spacing[1.5]);
-		font-weight: theme(fontWeight.medium);
-		color: theme(colors.white);
+		cursor: pointer;
+		border-radius: var(--radius-sm);
+		background-color: var(--color-neutral-600);
+		padding: --spacing(1) --spacing(1.5);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-white);
 		@apply text-sm;
 	}
 

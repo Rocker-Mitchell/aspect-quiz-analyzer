@@ -7,7 +7,7 @@
 </script>
 
 <footer class="root-footer">
-	<div class="container mx-auto space-y-3 px-2 pb-12 pt-6">
+	<div class="container space-y-3 pt-6 pb-12">
 		<nav>
 			<ul class="site-links">
 				{#each siteLinks as link}
@@ -37,7 +37,7 @@
 
 		<hr class="border-neutral-800/40" />
 
-		<p class="text-balance py-2 text-center">
+		<p class="py-2 text-center text-balance">
 			<a href="http://hs.hiveswap.com/ezodiac/index.php" target="_blank">The Extended Zodiac</a> by What
 			Pumpkin Games Inc.
 		</p>
@@ -45,10 +45,12 @@
 </footer>
 
 <style lang="postcss">
+	@reference '$src/app.css';
+
 	.root-footer {
-		background-color: theme(colors.neutral[200]);
-		font-weight: theme(fontWeight.medium);
-		color: theme(colors.neutral[800]);
+		background-color: var(--color-neutral-200);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-neutral-800);
 		@apply text-sm;
 	}
 
@@ -60,14 +62,14 @@
 		justify-content: center;
 
 		li {
-			padding: theme(spacing[2]);
+			padding: --spacing(2);
 
 			a {
-				color: theme(colors.neutral[700]);
+				color: var(--color-neutral-700);
 				text-decoration-line: none;
 
-				&:hover {
-					color: theme(colors.neutral[900]);
+				@variant hover {
+					color: var(--color-neutral-900);
 					text-decoration-line: underline;
 				}
 			}

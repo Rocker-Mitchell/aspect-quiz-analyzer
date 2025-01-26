@@ -1,5 +1,5 @@
 <header class="root-header">
-	<div class="container mx-auto p-2">
+	<div class="container">
 		<h1 class="brand">
 			<a href="/" class="cluster">
 				<img src="logo.svg" alt="Logo" height="32" aria-hidden="true" class="inline-block h-8" />
@@ -10,25 +10,22 @@
 </header>
 
 <style lang="postcss">
+	@reference '$src/app.css';
+
 	.root-header {
-		background-image: linear-gradient(
-			to bottom,
-			theme(colors.neutral[100]),
-			theme(colors.neutral[200])
-		);
-		color: theme(colors.neutral[800]);
+		color: var(--color-neutral-800);
+		@apply bg-linear-to-b from-neutral-100 to-neutral-200;
 	}
 
 	h1.brand {
-		font-family: theme(fontFamily.saira);
-		font-weight: theme(fontWeight.bold);
-		letter-spacing: theme(letterSpacing.tighter);
-		font-stretch: theme(fontStretch.expanded);
+		font-family: var(--font-saira);
+		font-weight: var(--font-weight-bold);
+		letter-spacing: var(--tracking-tighter);
+		font-stretch: expanded;
 
 		a {
-			--cluster-gap: theme(spacing[1.5]);
-			margin-left: auto;
-			margin-right: auto;
+			--cluster-gap: --spacing(1.5);
+			margin-inline: auto;
 			width: fit-content;
 			color: inherit;
 			text-decoration-line: none;

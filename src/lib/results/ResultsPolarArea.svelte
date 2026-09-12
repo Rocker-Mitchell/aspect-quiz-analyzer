@@ -79,12 +79,10 @@
 	let { scores }: { scores: ReadonlyMap<Aspect, number> } = $props();
 
 	let results = $derived(
-		ASPECT_WHEEL.map(
-			(aspect): Result => ({
-				aspect,
-				score: scores.get(aspect) ?? 0
-			})
-		)
+		ASPECT_WHEEL.map((aspect): Result => ({
+			aspect,
+			score: scores.get(aspect) ?? 0
+		}))
 	);
 	// want the max to never be <= min (0), so add 1 as the minimum max
 	let maxScore = $derived(Math.max(1, ...scores.values()));
@@ -116,12 +114,12 @@
 	class="mx-auto box-content rounded-2xl bg-neutral-200 p-2.5"
 >
 	<g transform="translate({canvasSize / 2},{canvasSize / 2})">
-		{#each resultSectors as sector}
+		{#each resultSectors as sector (sector.data.aspect)}
 			{#if sector.data.score > 0}
 				<path d={getArcData(sector, radiusScale)} class={sectorPathClasses[sector.data.aspect]} />
 			{/if}
 		{/each}
-		{#each sectorLabels as label}
+		{#each sectorLabels as label (label.text)}
 			<text
 				x={label.cx}
 				y={label.cy}

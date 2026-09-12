@@ -21,3 +21,6 @@ npm run lint
 npm run check
 npm run test
 ```
+
+> [!NOTE]
+> Some NPM scripts can fail if not run with higher permissions, like the integration tests expecting permissions to create symlinks for build output.

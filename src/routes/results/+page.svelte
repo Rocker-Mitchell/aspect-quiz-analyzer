@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { browser } from '$app/environment';
+	import { resolve } from '$app/paths';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import ResultsTable from '$lib/results/ResultsTable.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
@@ -36,7 +37,7 @@
 				<div class="space-y-2">
 					<p class="text-center">You can take the quiz again, changing your answers.</p>
 					<div class="text-center">
-						<SmallButton type="anchor" href="/quiz">Begin Again</SmallButton>
+						<SmallButton type="anchor" href={resolve('/quiz')}>Begin Again</SmallButton>
 					</div>
 				</div>
 			</div>
@@ -49,7 +50,7 @@
 		<p class="text-center">Try the test again with different answers.</p>
 
 		<div class="text-center">
-			<BigButton type="anchor" href="/quiz">Begin</BigButton>
+			<BigButton type="anchor" href={resolve('/quiz')}>Begin</BigButton>
 		</div>
 	{/if}
 </SpacedContainerSection>

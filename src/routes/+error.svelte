@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import SpacedContainerSection from '$lib/ui/SpacedContainerSection.svelte';
 </script>
@@ -7,6 +8,6 @@
 	<h1>{page.status} {page.error?.message}</h1>
 
 	<p class="text-center">
-		Something went wrong. Check the URL or go <a href="/">home</a>.
+		Something went wrong. Check the URL or go <a href={resolve('/')}>home</a>.
 	</p>
 </SpacedContainerSection>

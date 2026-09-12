@@ -53,7 +53,7 @@ Example:
 	this={isOrdered ? 'ol' : 'ul'}
 	class={['space-y-1', { 'list-alpha': type === 'alpha' }]}
 >
-	{#each items as item, index}
+	{#each items as item, index (item)}
 		<li>{@render listItem(item, index)}</li>
 	{/each}
 </svelte:element>

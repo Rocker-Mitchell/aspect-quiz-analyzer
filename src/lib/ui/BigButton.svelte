@@ -16,6 +16,7 @@
 </script>
 
 {#if restProps.type === 'anchor'}
+	<!-- eslint-disable svelte/no-navigation-without-resolve -->
 	<a href={restProps.href} data-color={activeColor} class="button big-button">
 		{@render children()}
 	</a>

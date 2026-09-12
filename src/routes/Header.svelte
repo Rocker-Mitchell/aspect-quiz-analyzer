@@ -1,7 +1,11 @@
+<script>
+	import { resolve } from '$app/paths';
+</script>
+
 <header class="root-header">
 	<div class="container">
 		<h1 class="brand">
-			<a href="/" class="cluster">
+			<a href={resolve('/')} class="cluster">
 				<img src="logo.svg" alt="Logo" height="32" aria-hidden="true" class="inline-block h-8" />
 				<span>Aspect Quiz Analyzer</span>
 			</a>

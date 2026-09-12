@@ -1,8 +1,11 @@
 <script lang="ts" module>
-	const siteLinks: readonly { readonly href: string; readonly label: string }[] = [
-		{ href: '/', label: 'Home' },
-		{ href: '/quiz', label: 'Take the Quiz' },
-		{ href: '/how-it-works', label: 'How It Works' }
+	import { resolve } from '$app/paths';
+	import type { ResolvedPathname } from '$app/types';
+
+	const siteLinks: readonly { readonly href: ResolvedPathname; readonly label: string }[] = [
+		{ href: resolve('/'), label: 'Home' },
+		{ href: resolve('/quiz'), label: 'Take the Quiz' },
+		{ href: resolve('/how-it-works'), label: 'How It Works' }
 	];
 </script>
 
@@ -10,8 +13,9 @@
 	<div class="container space-y-3 pt-6 pb-12">
 		<nav>
 			<ul class="site-links">
-				{#each siteLinks as link}
+				{#each siteLinks as link (link.href)}
 					<li>
+						<!-- eslint-disable svelte/no-navigation-without-resolve -->
 						<a href={link.href}>{link.label}</a>
 					</li>
 				{/each}

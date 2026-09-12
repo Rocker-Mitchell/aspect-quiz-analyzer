@@ -4,17 +4,17 @@
 	import TooltipNotification from '$lib/ui/TooltipNotification.svelte';
 
 	let {
-		href
+		link
 	}: {
-		/** The href to copy to the clipboard. */
-		href: string;
+		/** The link to copy to the clipboard. */
+		link: string;
 	} = $props();
 
 	let feedbackMessage = $state('');
 
 	function copyLink() {
 		navigator.clipboard
-			.writeText(href)
+			.writeText(link)
 			.then(() => {
 				feedbackMessage = 'Copied to clipboard';
 			})

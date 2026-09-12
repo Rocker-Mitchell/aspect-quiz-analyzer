@@ -60,14 +60,14 @@
 	<h1>Take the quiz below</h1>
 
 	<form method="POST" use:enhance={submit} {onreset} class="space-y-8">
-		{#each questions as question, questionIndex}
+		{#each questions as question, questionIndex (question.name)}
 			<fieldset class="space-y-2">
 				<legend>
 					<i>{questionIndex + 1}.</i>
 					{question.legend}
 				</legend>
 
-				{#each question.answers as answer}
+				{#each question.answers as answer (answer.value)}
 					<label class="flex items-center">
 						<input
 							type="radio"

@@ -1,4 +1,5 @@
 <script lang="ts" module>
+	import { resolve } from '$app/paths';
 	import { Aspect } from '$lib/aspect/aspect';
 	import ResultsPolarArea from '$lib/results/ResultsPolarArea.svelte';
 	import BigButton from '$lib/ui/BigButton.svelte';
@@ -169,6 +170,6 @@
 	</p>
 
 	<div class="text-center">
-		<BigButton type="anchor" href="/quiz">Begin</BigButton>
+		<BigButton type="anchor" href={resolve('/quiz')}>Begin</BigButton>
 	</div>
 </SpacedContainerSection>

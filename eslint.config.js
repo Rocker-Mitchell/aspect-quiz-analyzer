@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 import svelte from 'eslint-plugin-svelte';
@@ -6,7 +7,7 @@ import playwright from 'eslint-plugin-playwright';
 import prettier from 'eslint-config-prettier';
 import svelteConfig from './svelte.config.js';
 
-export default tsEslint.config(
+export default defineConfig(
 	eslint.configs.recommended,
 	...tsEslint.configs.recommended,
 	...svelte.configs['flat/recommended'],

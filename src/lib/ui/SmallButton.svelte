@@ -22,6 +22,7 @@
 {/snippet}
 
 {#if restProps.type === 'anchor'}
+	<!-- eslint-disable svelte/no-navigation-without-resolve -->
 	<a href={restProps.href} class="button inline-cluster active:brightness-95">
 		{@render inner()}
 	</a>

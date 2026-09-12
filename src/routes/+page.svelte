@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import BigButton from '$lib/ui/BigButton.svelte';
 </script>
 
@@ -9,7 +10,7 @@
 		<p>Take the quiz and see your results!</p>
 
 		<div>
-			<BigButton type="anchor" href="/quiz">Begin</BigButton>
+			<BigButton type="anchor" href={resolve('/quiz')}>Begin</BigButton>
 		</div>
 	</div>
 </section>

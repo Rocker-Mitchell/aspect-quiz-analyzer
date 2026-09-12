@@ -60,11 +60,9 @@ function getResultCompareFn(scores: ReadonlyMap<Aspect, number>): (a: Result, b:
 export function sortResults(scores: ReadonlyMap<Aspect, number>): Result[] {
 	const resultCompare = getResultCompareFn(scores);
 
-	const results = ASPECT_ORDER.map(
-		(aspect): Result => ({
-			aspect,
-			score: getScoreOrZero(scores, aspect)
-		})
-	);
+	const results = ASPECT_ORDER.map((aspect): Result => ({
+		aspect,
+		score: getScoreOrZero(scores, aspect)
+	}));
 	return results.sort(resultCompare);
 }

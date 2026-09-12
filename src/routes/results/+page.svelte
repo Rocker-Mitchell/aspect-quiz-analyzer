@@ -30,7 +30,7 @@
 				{#if browser}
 					<div class="space-y-2">
 						<p class="text-center">You can copy &amp; share your results.</p>
-						<CopyLinkCta href={data.href}></CopyLinkCta>
+						<CopyLinkCta link={data.href}></CopyLinkCta>
 					</div>
 				{/if}
 
